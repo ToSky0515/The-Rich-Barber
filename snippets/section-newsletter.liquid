@@ -1,0 +1,80 @@
+<style>
+
+.hide {
+    opacity:0;
+    left:-100%;
+}
+.show {
+    opacity:1;
+    left:0;
+}
+  
+
+</style>
+<div class="grey-bg hide" id="advertisement">
+ {% form 'customer', id: form_id %}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-6 pr-0">
+        <div class="symbol-area">
+        <p>
+      <img src="https://cdn.shopify.com/s/files/1/0495/0661/files/symbol.png?v=1622717818">
+      sign up for our newsletters for 
+          discounts, updates + the latest drops</p>
+          
+          
+      </div></div>
+      {% if form.posted_successfully? %}
+      <div class="col-xs-6 pr-0">
+      	 <div class="thankyou_msg">
+            <p>{{ 'general.newsletter.success' | t }}</p>
+         </div>
+      </div>
+      {%elsif  form.errors%}
+      <div class="signup-form__response">
+        {% for field in form.errors %}
+<!--         <p class="error">{{ field | capitalize }} - {{ form.errors.messages[field] }}</p> -->
+        <div class="col-xs-6">
+        <div class="newsletter-box">
+        <input type="email" placeholder="Enter a valid email" aria-label="{{ 'general.signup.email_label' | t | escape }}"
+                         placeholder="{{ 'general.signup.email_label' | t | escape }}" class="required" value="" id="mailinglist_email{{ section.id }}" name="contact[email]" >
+          <input type="submit" value="Sign Up">
+        </div>
+      </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      
+       <input type="hidden" name="newsletter" value="true"/>
+      <div class="col-xs-6">
+        <div class="newsletter-box">
+        <input type="email" placeholder="Enter your email" aria-label="{{ 'general.signup.email_label' | t | escape }}"
+                         placeholder="{{ 'general.signup.email_label' | t | escape }}" class="required" value="" id="mailinglist_email{{ section.id }}" name="contact[email]" >
+          <input type="submit" value="Sign Up">
+        </div>
+      </div>
+      
+    {% endif %}
+    </div>
+  </div>
+  {% endform %}
+</div>  
+ 
+
+
+<script>
+    $(document).scroll(function() {
+      
+        myID = document.getElementById("advertisement");
+
+        var myScrollFunc = function () {
+            var y = window.scrollY;
+            if (y >= 10) {
+                 myID.className = "grey-bg show"
+           } else {
+                 myID.className = "grey-bg hide"
+             }
+         };
+         window.addEventListener("scroll", myScrollFunc);
+     });
+</script>

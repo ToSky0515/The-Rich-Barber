@@ -1,0 +1,80 @@
+<div class="razor-one">
+<div class="container-fluid">
+  <ul class="razer-list">
+   
+   {% for block in section.blocks %} 
+    <li>
+       <div class="list-s">
+        {%- if block.settings.img1 != blank -%}
+         {{block.settings.img1 | img_url: '79x94', scale: 2 | img_tag: block.settings.image.alt }} 
+        {%- endif -%}
+     {% if block.settings.heading != blank %}
+          <h3> {{ block.settings.heading }}</h3>
+      {%endif%}
+      {% if block.settings.paragraph != blank %}
+      {{ block.settings.paragraph }}
+      {%endif%}
+     </div>
+   </li>
+  
+  {%endfor%}    
+    
+   
+  </ul>
+</div>
+  </div>
+{% schema %}
+{
+  "name": "DULL MATTE SECTION",
+  "class": "about-product",
+  "settings": [
+     	 
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "image",
+      "settings": [
+		{
+         "type": "image_picker",
+        "id":   "img1",
+        "label": "Image",
+        "info": "79 x 94px recommended"
+        },
+        
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Text"
+        },
+  		{
+          "id": "paragraph",
+          "type": "richtext",
+          "label": "Text"
+        }
+		
+		
+      ],
+      "limit": 6
+    }
+  ],
+  "presets": [
+    {
+      "name": "DULL MATTE SECTION",
+      "category": "PRODUCT DYNAMIC SECTION",
+      "blocks": [
+        {
+          "type": "image",
+          "settings": {
+            
+          }
+        }
+        
+        
+        
+      ]
+    }
+  ]
+}
+
+{% endschema %}

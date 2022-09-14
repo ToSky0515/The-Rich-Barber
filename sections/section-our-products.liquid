@@ -1,0 +1,69 @@
+<div class="our-pro">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+        <h2>{{ section.settings.title }}</h2>
+        <p>{{ section.settings.info }}</p>
+      </div>
+      <div class="col-sm-6">
+        <ul class="p-area">
+          <li><a href=""><img src="{{ section.settings.product_1 | img_url:'master' }}"></a></li>
+          <li><a href=""><img src="{{ section.settings.product_2 | img_url:'master' }}"></a></li>
+          <li><a href=""><img src="{{ section.settings.product_3 | img_url:'master' }}"></a></li>
+        </ul>
+        <a href="{{ section.settings.btn-link}}" class="v-btn">{{ section.settings.btn-text}}</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "About Our Products",
+    "settings": [
+	
+	 {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+      },
+	  {
+      "type": "textarea",
+      "id": "info",
+      "label": "info"
+      },
+     {
+      "type": "image_picker",
+      "id": "product_1",
+      "label": "Product Image 1"
+      },
+     {
+      "type": "image_picker",
+      "id": "product_2",
+      "label": "Product Image 2"
+      },
+     {
+      "type": "image_picker",
+      "id": "product_3",
+      "label": "Product Image 3"
+      },
+	 {
+      "type": "text",
+      "id": "btn-text",
+      "label": "Button Text"
+      },
+     {
+      "type": "url",
+      "id": "btn-link",
+      "label": "Button Link"
+      }
+
+
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

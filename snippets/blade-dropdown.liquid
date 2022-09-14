@@ -1,0 +1,167 @@
+ <div class="product-detail__form__options
+                product-detail__form__options--{{ section.settings.variant_style }}
+                {% if product.variants.size == 1 %}product-detail__form__options--no-options{% endif %}">
+
+                {% if product.variants.size > 1 %}
+                  <div class="option-selectors options-{{ product.options_with_values | size }}"
+                       data-cc-animate data-cc-animate-delay="0.35s" data-cc-animate-duration="1.5s">
+                    {% for option in product.options_with_values %}
+
+                      {% assign show_swatches = false %}
+                      {% assign option_name_lowercase = option.name | downcase %}
+                      {% if settings.swatch_enabled and option_name_lowercase == swatch_option_name_lowercase %}
+                        {% assign show_swatches = true %}
+                      {% endif %}
+
+                      <div class="selector-wrapper {% if show_swatches %} cc-swatches option--{{ option_name_lowercase | handle }}{% endif %}"
+                           data-option-name="{{ option.name }}">
+                        {% capture size_chart_html %}
+
+                        {%- assign option_name_lower = option.name | downcase -%}
+                        {%- assign target_option_name_lower = section.settings.size_chart_variant | downcase -%}
+                          {%- if section.settings.show_size_chart and option_name_lower == target_option_name_lower -%}
+                            <div class="size-chart-container">
+                              <a href="#size-chart-content" class="size-chart-link">{{ 'products.product.size_chart' | t }}</a>
+                              <div id="size-chart-content" class="hidden">
+                                <div class="size-chart">
+                                  <div class="size-chart__inner rte">
+                                    <h2>{{ pages[section.settings.size_chart_page].title }}</h2>
+                                    {{ pages[section.settings.size_chart_page].content }}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          {%- endif -%}
+                        {% endcapture %}
+                        <label {% if option.name == 'default' %}class="hidden"{% endif %} for="option-{{ option.name | handle }}-{{ product.id }}">
+                          {{- option.name -}}{%- if show_swatches -%}: <span class="cc-swatches__label">{{ option.selected_value }}</span>{%- endif -%}
+                          {%- if section.settings.variant_style == 'underlined' and show_swatches == false -%}{{ size_chart_html }}{%- endif -%}
+                        </label>
+                        <select id="option-{{ option.name | handle }}-{{ product.id }}"
+                                {% if section.settings.variant_style == 'underlined' or show_swatches %}class="noreplace" data-make-box{% endif %}
+                          {% if show_swatches %}data-colour-swatch="true"{% endif %}>
+                          {% for value in option.values %}
+                            <option value="{{ value | escape }}" {% if option.selected_value == value %}selected{% endif %}>{{ value }}</option>
+                          {% endfor %}
+                        </select>
+                        {% if section.settings.variant_style == 'dropdown' or show_swatches %}{{ size_chart_html }}{% endif %}
+                      </div>
+                    {% endfor %}
+                  </div>
+               
+
+                  <select name="id" class="original-selector" aria-label="{{ 'products.product.selector_label' | t | escape }}">
+                    {% for variant in product.variants %}
+                      <option value="{{ variant.id }}"
+                        {% if variant == product.selected_or_first_available_variant %} selected="selected"{% endif %}
+                        {% if section.settings.show_inventory_notice and variant.inventory_management == 'shopify' and variant.inventory_quantity > 0 %}
+                          {% if section.settings.inventory_notice_threshold == 0 or variant.inventory_quantity <= section.settings.inventory_notice_threshold %}
+                            data-inventory="{{ variant.inventory_quantity }}"
+                          {% endif %}
+                        {% endif %}
+                              data-stock="{% if variant.inventory_management == 'shopify' and variant.inventory_quantity <= 0 %}out{% endif %}">{{ variant.title | escape }}</option>
+                    {% endfor %}
+                  </select>
+
+                {% else %}
+                  <input type="hidden" class="single_variant_availability" value="{{ product.variants.first.inventory_quantity }}"/>
+                <div class="mobile-view">	
+                <div class="price_stl">
+                    {%- capture price_html -%}
+                      <div class="product-area__col product-area__col--price  {% if type_empty and vendor_empty %}price-area--no-vendor{% else %}price-area--has-vendor{% endif %}
+                            {% if current_variant.unit_price_measurement %}price-area--has-unit-price{% else %}price-area--no-unit-price{% endif %}">
+                        <div class="price-area" data-cc-animate
+                             data-cc-animate-delay="0.25s" data-cc-animate-duration="1.5s">
+                          {% if product != blank %}
+                            {% if current_variant.compare_at_price > current_variant.price %}
+                              <span class="was-price theme-money">{{ current_variant.compare_at_price | money }}</span>
+                            {% endif %}
+                            <div class="price theme-money">{{ current_variant.price | money }}</div>
+
+                            {% render 'unit-price', variant: current_variant %}
+                          {% else %}
+                            <span class="was-price">{{ 2999 | money }}</span>
+                            <div class="price">{{ 1999 | money }}</div>
+                          {% endif %}
+                        </div>
+                      </div>
+                    {%- endcapture -%}
+                    {{price_html}}
+                  </div>
+            
+             {%- assign product_price_part = current_variant.price |  divided_by : 4 -%}
+              
+              
+              {%-assign product_price_part = current_variant.price | money_without_currency  | divided_by: 4 -%}
+              {%-assign after_price = product_price_part | round: 2 -%}
+              
+              <p class="after-pay mob-viw">or 4 interest-free installments of $ {{after_price}} by afterpay</p>
+                </div>    
+                
+                
+                  {% unless show_single_variant_details == false or product.has_only_default_variant %}
+                    {% assign swatches_shown = false %}
+                    {%- for option in product.options -%}
+                      {% assign show_swatches = false %}
+                      {% assign option_name_lowercase = option | downcase %}
+                      {% if settings.swatch_enabled and option_name_lowercase == swatch_option_name_lowercase %}
+                        {% assign show_swatches = true %}
+                        {% assign swatches_shown = true %}
+                      {% endif %}
+
+                      <div class="selector-wrapper {% if show_swatches %}cc-swatches option--{{ option_name_lowercase | handle }}{% else %}single-option{% endif %}"
+                           data-option-name="{{ option }}">
+                        {%- if option != 'Title' -%}
+                          {%- assign opt_idx = 'option' | append: forloop.index -%}
+                          <div data-cc-animate data-cc-animate-delay="0.6s" data-cc-animate-duration="1.5s">
+                            {%- capture size_chart_html -%}
+                            {%- assign option_name_lower = option | downcase -%}
+                            {%- assign target_option_name_lower = section.settings.size_chart_variant | downcase -%}
+                              {%- if section.settings.show_size_chart and option_name_lower == target_option_name_lower -%}
+                                <div class="size-chart-container">
+                                  <a href="#size-chart-content" class="size-chart-link">{{ 'products.product.size_chart' | t }}</a>
+                                  <div id="size-chart-content" class="hidden">
+                                    <div class="size-chart">
+                                      <div class="size-chart__inner rte">
+                                        <h2>{{ pages[section.settings.size_chart_page].title }}</h2>
+                                        {{ pages[section.settings.size_chart_page].content }}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              {%- endif -%}
+                            {%- endcapture -%}
+
+                            <label {% if show_swatches %}for="option-{{ option | handle }}-{{ product.id }}"{% endif %}>
+                              {{- option -}}{%- if show_swatches -%}: <span class="cc-swatches__label">{{ product.variants.first[opt_idx] }}</span>{%- endif -%}
+                              {%- unless show_swatches -%}{{- size_chart_html -}}:{%- endunless -%}
+                            </label>
+
+                            {% if show_swatches %}
+                              <select name="id" id="option-{{ option | handle }}-{{ product.id }}" class="noreplace is-single-swatch" data-make-box data-colour-swatch="true">
+                                <option value="{{ product.selected_or_first_available_variant.id }}" selected>{{ product.variants.first[opt_idx] }}</option>
+                              </select>
+
+                              {{- size_chart_html -}}
+                            {% else %}
+                              {{ product.variants.first[opt_idx] }}
+                            {% endif %}
+                          </div>
+                        {%- endif -%}
+                      </div>
+                    {%- endfor -%}
+                  {% endunless %}
+                  
+                  {% unless swatches_shown %}
+                    <select name="id" id="option-{{ option | handle }}-{{ product.id }}" class="noreplace hidden">
+                      <option value="{{ product.selected_or_first_available_variant.id }}" selected
+                            {% if section.settings.show_inventory_notice and product.selected_or_first_available_variant.inventory_management == 'shopify' and product.selected_or_first_available_variant.inventory_quantity > 0 %}
+                              {% if section.settings.inventory_notice_threshold == 0 or product.selected_or_first_available_variant.inventory_quantity <= section.settings.inventory_notice_threshold %}
+                                data-inventory="{{ product.selected_or_first_available_variant.inventory_quantity }}"
+                              {% endif %}
+                            {% endif %}
+                            data-stock="{% if product.selected_or_first_available_variant.inventory_management == 'shopify' and product.selected_or_first_available_variant.inventory_quantity <= 0 %}out{% endif %}">{{ product.variants.first[opt_idx] }}</option>
+                    </select>
+                  {% endunless %}
+                {% endif %}
+              </div>

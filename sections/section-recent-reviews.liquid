@@ -1,0 +1,117 @@
+<div class="review-spc">
+<div class="container-fluid">
+  
+   <div style="max-width:662px;" class="review hidden">
+     
+     
+      <div class="yotpo yotpo-main-widget"
+data-product-id="{{ product.id }}"
+data-name="{{ product.title | escape }}"
+data-url="{{ shop.url }}{{ product.url }}"
+data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}"
+data-price="{{ variant.price | money_without_currency }}"
+data-currency="{{ shop.currency }}"
+data-description="{{ product.description | escape }}">
+</div>
+    </div>
+  
+  {% if section.settings.main_heading != blank %}
+  <h2>{{ section.settings.main_heading }}</h2>
+  {%endif%}
+ 
+  <ul class="yot-review clearfix">
+     <li>
+     <div class="vid-bx">
+      <a href="" data-toggle="modal" data-target="#exampleModal"> <img src="https://cdn.shopify.com/s/files/1/0495/0661/files/video-thumb.jpg?v=1625135673" class="video-thumb"></a>
+      <h6><b>h. walker | Professional barber</b>
+     new york, new york</h6>
+    </div> 
+    </li>
+  <li>
+     <img src="https://cdn.shopify.com/s/files/1/0495/0661/files/quote.svg?v=1625139059" class="qt-icon">
+
+      <div class="yotpo yotpo-reviews-carousel" 
+       data-background-color="transparent" 
+       data-mode="top_rated" 
+       data-type="both" 
+       data-count="9" 
+       data-show-bottomline="1" 
+       data-autoplay-enabled="1" 
+       data-autoplay-speed="3000" 
+       data-show-navigation="1">&nbsp;</div>
+    </li>
+  </ul>
+</div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+   
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <iframe width="100%" src="https://www.youtube.com/embed/bCDUXBK-ysE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+ 
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Recent Reviews Section",
+  "class": "barber",
+  "settings": [
+     	 {
+          "id": "main_heading",
+          "type": "text",
+          "label": "Main Heading",
+		  "default":"RECENT REVIEWS"
+        }
+  
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "image",
+      "settings": [
+        
+  		{
+          "id": "paragraph",
+          "type": "richtext",
+          "label": "Enter Review"
+        },
+		{
+        "type": "image_picker",
+        "id": "img",
+        "label": "Reviewer Image",
+        "info": "50 x 50px recommended"
+       },
+		{
+          "id": "title",
+          "type": "text",
+          "label": "Title"
+        },
+        {
+          "id": "city",
+          "type": "text",
+          "label": "City"
+        },
+		{
+          "id": "date",
+          "type": "text",
+          "label": "Date"
+        }
+		
+		
+      ],
+      "limit": 3
+    }
+  ]
+}
+
+{% endschema %}

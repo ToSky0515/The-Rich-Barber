@@ -1,0 +1,179 @@
+<div class="dark-g-bg">
+<div class="container-fluid">
+  <div class="row">
+  <div class="col-md-7">
+    <a href="" data-toggle="modal" data-target="#exampleModal2">
+      <img src="{{section.settings.thumb_img}}" class="how-to-use w-100">
+    </a>
+  </div>
+  <div class="col-md-5">
+    <div class="how-cont">
+      {% if section.settings.heading != blank %}
+      <h3>{{ section.settings.heading }}</h3>
+      {%endif%}
+      {% if section.settings.paragraph != blank %}
+      {{ section.settings.paragraph }}
+      {%endif%}
+      
+    <ul class="abt-list">
+    <li> 
+       {%- if section.settings.logo1 != blank -%}
+       {{section.settings.logo1 | img_url: '196x152', scale: 2 | img_tag: block.settings.image.alt }} 
+       {%else%}
+       <img src="https://cdn.shopify.com/s/files/1/0495/0661/files/use-logo-1.png?v=1634652150">
+       {%- endif -%}
+      
+      {% if section.settings.title1 != blank %}
+      <h5>{{ section.settings.title1 }}</h5>
+      {%endif%}
+      {% if section.settings.desc1 != blank %}
+      {{ section.settings.desc1 }}
+      {%endif%}
+    </li> 
+    
+   <li> 
+       {%- if section.settings.logo2 != blank -%}
+       {{section.settings.logo2 | img_url: '196x152', scale: 2 | img_tag: block.settings.image.alt }}
+       {%else%}
+       <img src="https://cdn.shopify.com/s/files/1/0495/0661/files/use-logo-2.png?v=1634652150">
+       {%- endif -%}
+      
+      {% if section.settings.title2 != blank %}
+      <h5>{{ section.settings.title2 }}</h5>
+      {%endif%}
+      {% if section.settings.desc2 != blank %}
+      {{ section.settings.desc2 }}
+      {%endif%}
+    </li> 
+      
+    <li> 
+       {%- if section.settings.logo3 != blank -%}
+       {{section.settings.logo3 | img_url: '196x152', scale: 2 | img_tag: block.settings.image.alt }}
+       {%else%}
+       <img src="https://cdn.shopify.com/s/files/1/0495/0661/files/use-logo-3.png?v=1634652150">
+       {%- endif -%}
+      
+      {% if section.settings.title3 != blank %}
+      <h5>{{ section.settings.title3 }}</h5>
+      {%endif%}
+      {% if section.settings.desc3 != blank %}
+      {{ section.settings.desc3 }}
+      {%endif%}
+    </li> 
+    
+  </ul>
+    	
+    </div>
+  </div>
+</div>
+  </div>
+ </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+       
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+     <iframe width="100%" src="{{section.settings.video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+ 
+    </div>
+  </div>
+</div>
+
+{% schema %} 
+  {
+    "name": "How to use section",
+    "settings": [
+        {
+        "id": "thumb_img",
+        "type": "text",
+        "label": "Video thumb",
+        "default": "https://cdn.shopify.com/s/files/1/0495/0661/files/play-area-big.jpg?v=1627986551"
+
+        },
+        {
+          "id": "video",
+          "type": "text",
+          "label": "Video link",
+          "default": "https://www.youtube.com/embed/KIhXteiXTn0"
+        },
+		{
+        "id":"heading",
+        "type":"text",
+        "label":"Main heading",
+		"default":"HOW TO USE"
+        },
+		
+	    {
+        "id":"paragraph",
+        "type":"richtext",
+        "label":"How to use message",
+         "default":"<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Risus commodo viverra maecenas accumsan lacus vel facilisis. Risus commodo viverra maecenas accumsan lacus vel facilisis. lacus vel facilisis. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>"
+        },
+		{
+        "type": "image_picker",
+        "id": "logo1",
+        "label": "First Icon Image",
+        "info": "196 x 152px recommended"
+       },
+		{
+        "id":"title1",
+        "type":"text",
+        "label":"Title One",
+		"default":"BARBER DESIGNED"
+        },
+		{
+        "id":"desc1",
+        "type":"richtext",
+        "label":"Text One",
+         "default":"<p>DESIGNED TO SIMPLIFY THE AT HOME EXPERIENCE, BY AN INDUSTRY PROFESSIONAL</p>"
+        },
+		
+        {
+        "type": "image_picker",
+        "id": "logo2",
+        "label": "Second Icon Image",
+        "info": "196 x 152px recommended"
+       },
+		{
+        "id":"title2",
+        "type":"text",
+        "label":"Title Two",
+		"default":"FOR DETAILS"
+        },
+		{
+        "id":"desc2",
+        "type":"richtext",
+        "label":"Text Two",
+         "default":"<p>USE THE RAZOR HOLDER TO GET CLOSER DETAIL WORK, LIKE LINE-UPS</p>"
+        },
+		
+        {
+        "type": "image_picker",
+        "id": "logo3",
+        "label": "Third Icon Image",
+        "info": "196 x 152px recommended"
+       },
+		{
+        "id":"title3",
+        "type":"text",
+        "label":"Title Three",
+		"default":"BARBER DESIGNED"
+        },
+		{
+        "id":"desc3",
+        "type":"richtext",
+        "label":"Text Three",
+         "default":"<p>DESIGNED TO SIMPLIFY THE AT HOME EXPERIENCE, BY AN INDUSTRY PROFESSIONAL</p>"
+        }
+		
+	]
+  }
+{% endschema %}

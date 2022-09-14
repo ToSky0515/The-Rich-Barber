@@ -1,0 +1,62 @@
+<div class="our-d">
+<div class="container-fluid">
+  <h2>{{ section.settings.title }}</h2>
+  <div class="row"> 
+    {% for block in section.blocks %} 
+    
+     <div class="col-sm-4">
+    	<img src="{{ block.settings.image| img_url:'master' }}" />	
+       	<h3>{{ block.settings.title}}</h3>
+       <p>{{ block.settings.info }}</p>       
+     </div>
+    
+    {% endfor %}
+    
+  </div>
+</div>
+  </div>
+
+{% schema %}
+  {
+    "name": "Our Philosphy",
+    "settings": [
+      {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+      }
+	],
+   "blocks": [
+	{
+      "type": "text",
+      "name": "Text",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+          },
+         {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+          },
+        {
+          "type": "textarea",
+          "id": "info",
+          "label": "info"
+          }
+
+
+        ]
+	  }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

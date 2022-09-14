@@ -1,0 +1,16 @@
+<div id="myCarousel" class="carousel slide vertical " data-ride="carousel">
+    {% assign count = 0 %}
+    <div class="carousel-inner">
+      {% for block in section.blocks %}
+      {% if count == 0 %} <div class="item active"> {%else%}<div class="item">{%endif%}
+      {% assign count = count | plus: 1 %}
+        <div class="cust-cap">
+          {% if block.settings.title != blank %}
+          <p class="">  {{ block.settings.title }}</p>
+          {%endif%}
+        </div>
+      </div>
+      {%endfor%}
+    </div>
+  </div>
+</div>

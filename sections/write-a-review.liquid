@@ -1,0 +1,38 @@
+
+<div id="review-section" class="review-section">   
+  <div class="container">
+    <h1 class="review-heading">Customer Reviews</h1>
+  </div>
+<div id="go-to-bottom">
+<div class="yotpo yotpo-main-widget"
+data-product-id="{{ product.id }}"
+data-name="{{ product.title | escape }}"
+data-url="{{ shop.url }}{{ product.url }}"
+data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}"
+data-price="{{ variant.price | money_without_currency }}"
+data-currency="{{ shop.currency }}"
+data-description="{{ product.description | escape }}">
+  </div>
+</div>
+</div>
+
+<div class="container d-none">
+<div class="yotpo yotpo-reviews-carousel" 
+ data-background-color="transparent" 
+ data-mode="top_rated" 
+ data-type="both" 
+ data-count="9" 
+ data-show-bottomline="1" 
+ data-autoplay-enabled="1" 
+ data-autoplay-speed="3000" 
+ data-show-navigation="1">&nbsp;</div>
+</div> 
+
+
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

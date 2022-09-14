@@ -1,0 +1,239 @@
+<style>
+  .blog-menu {
+    width: 300px;
+    margin-top: 38px;
+  }
+  .blog-menu ul {
+    padding-left: 15px;
+  }
+  .blog-menu ul li {
+    list-style-type: none;
+    font-size: 14px;
+    line-height: 42px;
+    font-weight: 500;
+    color: black;
+  }
+  .blog-menu ul li a {
+    color: black;
+    text-transform: uppercase;
+  }
+  .blog-menu h2 {
+    padding: 15px!important;
+    background: #edecec;
+    text-align: left;
+    font-size: 18px;
+    margin-top: 10px;
+    color: #000;
+    text-transform: uppercase;
+    font-family: Avenir;
+  }
+  .cat-bg {
+    display: flex;
+    justify-content: center;
+  }
+  .container {
+    margin: 0px;
+  }
+  .blog-menu-mob {
+    display: none;
+  }
+  @media (max-width: 991px) {
+    .container {
+      margin-top: 46px;
+    }
+  }
+  @media (max-width: 700px) {
+    .blog-menu {
+      margin: auto;
+    }
+    .blog-menu h2 {
+      cursor: pointer;
+    }
+    .blog-menu ul {
+      display: none;
+    }
+    .cat-bg {
+      display: block;
+    }
+    #shopify-section-blog-template {
+      margin-top: 30px;
+    }
+    .blog-menu-mob {
+      display: block;
+    }
+    .cat-bg .pretty-select.id-undefined {
+      width: 320px;
+    }
+  }
+</style>
+<div class="central content" data-section-type="blog-template">
+ <div class="cat-bg">
+ {%- if section.settings.blog_show_banner -%}
+ {%if section.settings.image!=blank%}   
+   <img src="{{section.settings.image | img_url:'master'}}" class="w-100">
+ {%endif%}
+ </div>
+ {%endif%}
+  <div class="blog-menu">
+    <h2>CATEGORY</h2>
+    <ul>
+      {% for block in section.blocks %}
+        <li><a href="{{ shop.url }}{{block.settings.category_url}}">{{block.settings.category_tag}}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="container">
+   
+  {% paginate blog.articles by 6 %}
+
+  {% comment %} {% if current_tags %}
+    <h1 class="feature-header" data-cc-animate>
+      <a data-cc-animate-click href="{{ blog.url }}">
+        {{ blog.title }}
+      </a> / {{ current_tags.first }}
+    </h1>
+  {% else %}
+    <h1 class="feature-header" data-cc-animate>
+      {{ blog.title }}
+      <a class="rsslink" style="display:none" href="{{ blog.url }}.atom" title="{{ blog.title | escape }} RSS" aria-label="{{ blog.title | escape }} RSS">
+        {% render 'svg-rss' %}
+      </a>
+    </h1>
+  {% endif %} {% endcomment %}
+
+
+  {% if blog.all_tags.size > 0 %}
+  <div class="option align-center option--gap-top" data-cc-animate  data-cc-animate-delay="0.2s">
+    <label for="filter-by">{{ 'blogs.filtering.filter_by' | t }}</label>
+    <select id="filter-by" class="redirecter">
+      <option value="{{ shop.url }}{{ blog.url }}">{{ 'blogs.filtering.all' | t }}</option>
+      {% for tag in blog.all_tags %}
+      <option value="{{ blog.url }}/tagged/{{ tag | handle }}" {% if current_tags contains tag %}selected{% endif %}>{{ tag | capitalize }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  {% endif %}
+
+  <div class="articles">
+<div class="row">
+    {% for article in blog.articles %}
+    
+      <div class="col-md-4 col-sm-6">
+    <article class="article" data-cc-animate>
+      
+      {% if article.image %}
+      <div class="article-image no-side-pad">
+        <a data-cc-animate-click href="{{ article.url }}">
+          {% render 'responsive-image-blog', image: article.image %}
+        </a>
+      </div>
+      {% endif %}
+      
+      <div class="article-title-header">
+        <h2>
+          <a data-cc-animate-click href="{{ article.url }}">{{ article.title }}</a>
+        </h2>
+
+        {% if section.settings.blog_show_date or section.settings.blog_show_author %}
+          <div class="feature-subheader">
+            {%- if section.settings.blog_show_date -%}
+              <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: format: 'month_date_year' }}</time>
+            {%- endif -%}
+
+            {%- if section.settings.blog_show_author -%}
+              {%- if section.settings.blog_show_date -%}{%- endif -%}
+              <span class="author">{{ article.author }}</span>
+            {%- endif -%}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="blog_main rte rte--allow-full-width-images">
+        {% if article.excerpt != blank %}
+          {{ article.excerpt }}
+        {% else %}
+          <p>{{ article.content | strip_html | truncatewords: 100 }}</p>
+        {% endif %}
+      </div>
+      <a data-cc-animate class="blog-read-more" href="{{ article.url }}">{{ 'blogs.article.read_more' | t }}</a>
+      
+        </article>
+    </div>
+    {% else %}
+      <p class="align-centre"><em>{{ 'blogs.general.no_matches' | t }}</em></p>
+  </div>  
+  {% endfor %}
+
+  </div>
+
+  {% if paginate.pages > 1 %}
+  <div class="pagination text-center">
+    {% comment %}
+    When paginating blog articles, a previous article is actually a newer article, not an older one,
+    because blog articles are shown and paginated in a reversed chronological order.
+    The word 'previous' can be confusing, hence we'll change it.
+    {% endcomment %}
+    {% assign older_articles = 'blogs.pagination.older_articles' | t %}
+    {% assign newer_articles = 'blogs.pagination.newer_articles' | t %}
+    {{ paginate | default_pagination | replace: 'Previous', newer_articles | replace: 'Next', older_articles }}
+  </div>
+  {% endif %}
+
+  {% assign sp_paginate_by = paginate.page_size %}{% endpaginate %}
+  </div></div>
+
+<script>
+  $('.blog-menu h2').click(function(e) {
+    console.log('click');
+    $(this).siblings('ul').toggle();
+  });
+</script>
+{% if sp_paginate_by %}{% render 'spurit_po2_collection_template_snippet', paginate_by: sp_paginate_by %}{% endif %}{% schema %}
+  {
+    "name": "Blog pages",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Banner Image",
+        "info": "1824 x 932px recommended"
+      },
+      {
+        "type": "checkbox", 
+        "id": "blog_show_banner",
+        "label": "Show banner image",
+        "default": false
+      },
+      {
+        "type": "checkbox", 
+        "id": "blog_show_author",
+        "label": "Show author",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_date",
+        "label": "Show date",
+        "default": true
+      }
+    ],
+    "blocks": [
+      {
+        "type": "article_category",
+        "name": "Article Category",
+        "settings": [
+          {
+            "type": "text",
+            "id": "category_tag",
+            "label": "Category Tag"
+          },
+          {
+            "type": "url",
+            "id": "category_url",
+            "label": "Tagged URL"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

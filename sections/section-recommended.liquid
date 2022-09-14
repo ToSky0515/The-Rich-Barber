@@ -1,0 +1,159 @@
+<div class="best-seller">
+<div class="container-fluid">
+  {%- if section.settings.main_heading != blank -%}
+  <h2 class="text-left bld text-center">{{section.settings.main_heading}}</h2>
+  {%- endif -%}
+  
+ <div class="row">
+   <div class="recommend-slider">
+  {%- for block in section.blocks -%} 
+  <div class="col-md-6 bd-r">
+    
+     <div class="row">
+  <div class="col-xs-5 pr-0">
+    <div class="seller-img">
+      <a href="">
+        {%- if block.settings.img1 != blank -%}
+         {{block.settings.img1 | img_url: '316x335', scale: 2 | img_tag: block.settings.image.alt }} 
+        {%- endif -%}
+      </a>
+    </div>
+  	
+  </div>
+  <div class="col-xs-7">
+    <div class="p-area">
+      {%- if block.settings.product_name1 != blank -%}
+    <h4 class="text-left bld ">{{block.settings.product_name1}}</h4>
+    {%- endif -%} 
+    {%- if block.settings.desc1 != blank -%}  
+       {{block.settings.desc1}}
+    {%- endif -%} 
+    </div>
+        <div class="row">
+          <div class="col-md-6">
+            <ul class="star-list">
+              <li><i class="fa fa-star" aria-hidden="true"></i></li>
+              <li><i class="fa fa-star" aria-hidden="true"></i></li>
+              <li><i class="fa fa-star" aria-hidden="true"></i></li>
+              <li><i class="fa fa-star" aria-hidden="true"></i></li>
+              <li><i class="fa fa-star" aria-hidden="true"></i></li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            {%- if block.settings.product_price1 != blank -%} 
+            <div class="prc"><b>{{block.settings.product_price1}}</b></div>
+            {%- endif -%} 
+          </div>
+       </div>
+            <div class="row">
+          <div class="col-xs-6 pr-2">
+            {% if block.settings.cart_btn1 != blank %}
+             <a class="add-btn" href="{{ block.settings.cart_link1 }}">{{ block.settings.cart_btn1 }}</a>
+            {%endif%}
+            
+          </div>
+          <div class="col-xs-6 pl-2">
+            {% if block.settings.learn_btn1 != blank %}
+            <a href="{{ block.settings.learn_link1 }}" class="learn-btn">{{ block.settings.learn_btn1}}</a>
+            {%endif%}
+           </div>
+        </div>
+       
+       </div>
+</div>
+  </div>
+     {%endfor%}
+   </div>
+
+   
+</div>
+  </div>
+  </div>
+{% schema %}
+{
+  "name": "Recommeneded Section",
+  "class": "barber",
+  "settings": [
+     	 {
+          "id": "main_heading",
+          "type": "text",
+          "label": "Main Heading",
+		  "default":"RECOMMENDED FOR YOU"
+        }
+  
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "image",
+      "settings": [
+        
+  		{
+        "type": "image_picker",
+        "id":   "img1",
+        "label": "First Product Image",
+        "info": "316 x 335px recommended"
+       },
+		{
+        "id":"product_name1",
+        "type":"text",
+        "label":"Product Name 1",
+		"default":"PRO BARBER TOOLS KIT, MODIFIER & SETTER"
+        },
+		{
+        "id":"product_price1",
+        "type":"text",
+        "label":"Product Price",
+		"default":"$ 34.95"
+        },
+		
+		{
+          "id": "desc1",
+          "type": "richtext",
+          "label": "product description",
+		  "default":"<p>About the product will go here in this section. About the product will go here in this section.About the product will go here.</p>"
+        },
+		{
+        "type": "text",
+        "id":   "cart_btn1",
+        "label": "Add To Cart Button",
+		"default":"ADD TO CART"
+        },
+  		{
+          "id": "cart_link1",
+          "type": "url",
+          "label": "Add To Cart Link"
+        },
+
+		{
+        "type": "text",
+        "id":   "learn_btn1",
+        "label": "Learn Button",
+		"default":"LEARN MORE"
+        },
+  		{
+          "id": "learn_link1",
+          "type": "url",
+          "label": "Learn Link"
+        }
+		
+      ],
+      "limit": 9
+    }
+  ],
+  
+  "presets": [
+    {
+      "name": "Recommended Section",
+      "category": "HOME DYNAMIC SECTION",
+      "blocks": [
+        
+        
+        
+        
+      ]
+    }
+  ]
+}
+
+{% endschema %}

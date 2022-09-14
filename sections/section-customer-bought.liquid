@@ -1,0 +1,157 @@
+<div class="bought-area">
+   <div class="container-fluid">
+      <h2>customers also bought</h2>
+      <div class="bt-slider">
+        {%- for block in section.blocks -%}
+         {%- for product in collections[block.settings.collection].products -%}
+         <div>
+            <div class="bt-s">
+               <img src="{{ product.featured_image.src | img_url: "large" }}" alt="{{ product.featured_image.alt | escape }}">
+              <a href="{{ product.url | within: collection }}" > 
+              <h5>{{ product.title }}</h5>
+              </a>
+               <div class="pr">
+                 {{ product.price | money }}
+
+                </div>
+               <ul class="star-list">
+                  <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                  <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                  <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                  <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                  <li><i class="fa fa-star" aria-hidden="true"></i></li>
+               </ul>
+               <span>(213)</span>
+              <a href="{{ product.url | within: collection }}" class="add-btn mt-2">{{ section.settings.btn-title }}</a>
+            </div>
+         </div>
+        
+        {% else %}
+            The collection is empty!
+         {%- endfor -%}
+         {%- endfor -%}
+<!--          <div>
+            <div class="bt-s">
+               <img src="https://cdn.shopify.com/s/files/1/0495/0661/files/bt-2.png?v=1623615028">
+               <h5>the rich barber method book, by chuka torres</h5>
+               <div class="pr">$27.95</div>
+               <ul class="star-list">
+                  <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                  <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                  <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                  <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                  <li><i class="fa fa-star" aria-hidden="true"></i></li>
+               </ul>
+               <span>213</span>
+               <a href="" class="add-btn mt-2">ADD TO CART</a>
+            </div>
+         </div>
+         <div>
+            <div class="bt-s">
+               <img src="https://cdn.shopify.com/s/files/1/0495/0661/files/bt-3.png?v=1623615028">
+               <h5>the rich barber method book, by chuka torres</h5>
+               <div class="pr">$27.95</div>
+               <ul class="star-list">
+                  <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                  <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                  <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                  <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                  <li><i class="fa fa-star" aria-hidden="true"></i></li>
+               </ul>
+               <span>213</span>
+               <a href="" class="add-btn mt-2">ADD TO CART</a>
+            </div>
+         </div>
+         <div>
+            <div class="bt-s">
+               <img src="https://cdn.shopify.com/s/files/1/0495/0661/files/bt-4.png?v=1623615028">
+               <h5>the rich barber method book, by chuka torres</h5>
+               <div class="pr">$27.95</div>
+               <ul class="star-list">
+                  <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                  <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                  <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                  <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                  <li><i class="fa fa-star" aria-hidden="true"></i></li>
+               </ul>
+               <span>213</span>
+               <a href="" class="add-btn mt-2">ADD TO CART</a>
+            </div>
+         </div>
+         <div>
+            <div class="bt-s">
+               <img src="https://cdn.shopify.com/s/files/1/0495/0661/files/bt-4.png?v=1623615028">
+               <h5>the rich barber method book, by chuka torres</h5>
+               <div class="pr">$27.95</div>
+               <ul class="star-list">
+                  <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                  <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                  <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                  <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                  <li><i class="fa fa-star" aria-hidden="true"></i></li>
+               </ul>
+               <span>213</span>
+               <a href="" class="add-btn mt-2">ADD TO CART</a>
+            </div>
+         </div>
+         <div>
+            <div class="bt-s">
+               <img src="https://cdn.shopify.com/s/files/1/0495/0661/files/bt-4.png?v=1623615028">
+               <h5>the rich barber method book, by chuka torres</h5>
+               <div class="pr">$27.95</div>
+               <ul class="star-list">
+                  <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                  <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                  <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                  <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                  <li><i class="fa fa-star" aria-hidden="true"></i></li>
+               </ul>
+               <span>(213)</span>
+               <a href="" class="add-btn mt-2">ADD TO CART</a>
+            </div>
+         </div> -->
+        
+      </div>
+   </div>
+</div>
+{% schema %}
+{
+   "name": "Custom Bought Collection",
+   "settings": [
+      
+      {
+      "type": "text",
+      "id": "btn-title",
+      "default": "ADD TO CART",
+      "label": "Button Title"
+      },
+      {
+      "type": "color",
+      "id": "color_bg--buyBtn",
+      "label": "Button Color on Hover",
+      "default": "#CBD5CC"
+      }
+   ],
+   "blocks": [
+      {
+         "type": "collection",
+         "name": "Collection",
+         "limit": 1,
+         "settings": [
+            {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+            }
+
+         ]
+      }
+   ],
+   "presets": [
+      {
+      "name": "Custom Made Collection",
+      "category": "Product Dynamic Section"
+      }
+   ]
+}
+{% endschema %}

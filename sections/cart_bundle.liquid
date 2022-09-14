@@ -1,0 +1,345 @@
+<style>
+  .best-seller-slider .aod_buy_now {
+    display: none;
+  }
+</style>
+<div class="container-fluid custom_collection">
+  <div class="header_sections_data">
+    {% if section.settings.heading != blank %}
+    <h1>{{ section.settings.heading }}</h1>
+    {% endif %}
+    {% if section.settings.content != blank %}
+    <div class="content">{{ section.settings.content }}</div>
+    {% endif %}
+  </div>
+
+  {% assign collection = collections[section.settings.col2] %}
+  <div class="row">
+    <div class="best-seller-slider recommend-slider">
+    {% for product in collection.products limit: 100 %}
+
+      <div class="col-md-12 bd-r">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 pr-0">
+              <div class="seller-img">
+                <a href="{{ product.url | within: collection }}">
+                <img style="object-fit: contain;" src="{{ product.featured_image.src | img_url: "large" }}" alt="{{ product.featured_image.alt | escape }}"> 
+                </a>
+              </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 pr-0">
+              <div class="p-area">
+                <a href="{{ product.url | within: collection }}">
+                  <h4 class="text-left bld best-seller-prod">{{ product.title }}</h4>
+                </a>
+                <div class="yotpo bottomLine newp-line" data-product-id="{{ product.id }}"> </div> 
+                <div class="clear"></div>
+                <div class="prod-desc carousal show-read-more">{{product.description}}</div>
+              </div>
+            <style>
+            .col-xs-7.col-sm-12.pr-0 a.text-m {
+              width: 22px;
+              height: unset;
+              padding: unset;
+              margin: unset;
+              overflow: unset;
+              clip: unset;
+              border: unset;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: clip;
+              background: white;
+              word-spacing: 50px;
+              }
+            </style>      
+              <ul class="star-bxw">
+                <li><div class="yotpo bottomLine new-pos" data-product-id="{{ product.id }}"> </div> </li>  
+                <li><div class="prc"><b>{{product.price | money | remove:" "}}</b></div></li>
+              </ul>
+              <div class="row">
+                <form method="post" action="{{routes.cart_add_url}}">
+                  <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+                  <div class="col-xs-12">
+                    <input type="submit" value="ADD TO CART" class="input-button" />
+                  </div>
+                </form>     
+              </div>
+          </div>
+        </div>
+      </div>
+
+    {% endfor %} 
+    </div>
+  </div>
+</div>
+
+<style> 
+  .custom_collection {
+    max-width: 1055px;
+  }
+  .custom_collection .collection_product {
+    width: 25%;
+    display: inline-block;
+    float: left;
+    padding: 15px 40px;
+  }
+
+  .custom_product_description {
+    display: -webkit-box;
+    min-height: 32px;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    line-height: 23px;
+    color: #000;
+  }
+
+  div#shopify-section-blogsidebar {
+    display: inline-block;
+    width: 29%;
+    vertical-align: top;
+    padding-left: 40px;
+  }
+  div#shopify-section-article-template {
+    display: inline-block;
+    width: 69%;
+  }
+  .custom_collection .cusrom_varinat_sel {
+    width: 100%;
+    display: inline-block;
+    float: left;
+    flex-basis: 100%;
+  }
+
+  .custom_collection ul li.var_option p {
+    border: 1px solid;
+    margin-right: 5px;
+    padding: 5px;
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    font-size: 9px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .custom_collection ul li.var_option {
+    display: inline-block;
+    float: left;
+  }
+  .custom_collection ul li.var_option.selected p {
+    border: 2px solid black!important;
+  }
+  .custom_collection ul#SingleOptionSelector-1 .var_option p {
+    font-size: 0;
+  }
+  .custom_collection .product-form__item label {
+    line-height: 9.96px;
+  }
+
+  a.btn.btn--secondary.btn--has-icon-before.return-link {
+    display: none;
+  }
+  a.btn.button.Button.custom_bundle_cart {
+    color: #fff;
+    background-color:#000;
+    padding: 10px 6px;
+  }
+  a.btn.button.Button.custom_bundle_cart:hover {
+    color: #fff !important;
+    background-color:#3e3e3e !important;
+  }
+  .header_sections_data h1 {
+    margin-bottom: 25px;
+    font-weight: 600;
+    font-family: Avenir;
+  }
+  .slick-dots li.slick-active button {
+    border-color: #fff;
+    background: #5c5c5c;
+  }
+  .slick-dots li button {
+    width: 25px;
+    height: 15px;
+    background: #d4d4d4;
+  }
+
+  .products_wrapper {
+    padding: 20px 0 50px 0px;
+    width: 100%;
+    max-width: 80%;
+    margin: 0 auto;
+    float: none;
+  }
+  .products_wrapper .slick-dots {
+    bottom: 15px!important;
+  }
+  .custom_collection .collection_product:after {
+    content: '';
+    width: 1.5px;
+    height: 100%;
+    background: black;
+    position: absolute;
+    left: 0px;
+    top: 0;
+  }
+  .collection_product.slick-slide.slick-cloned:after{
+    display:none;
+  }
+  div#variant-inventory a.btn.button.Button.custom_bundle_cart {
+    width: 100%;
+  }
+  .collection_product:nth-child(1):after{
+    display:none;
+  }
+
+  .collection_product[data-slick-index='0']:after{
+    display:none;
+  }
+  .collection_product[data-slick-index='3']:after{
+    display:none;
+  }
+
+  .collection_product[data-slick-index='6']:after{
+    display:none;
+  }
+  .collection_product[data-slick-index='9']:after{
+    display:none;
+  }
+
+  .custom_collection .collection_product .img img {
+    max-height: 210px;
+    margin: auto;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .custom_collection .collection_product {
+      display: inline-block;
+      align-items: center;
+      padding-bottom: 20px;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 0;
+    }
+    .custom_collection .img {
+      width: 100%;
+      display: inline-block;
+      float: left;
+    }
+    .custom_collection .pro_info {
+      width: 100%;
+      display: inline-block;
+      float: left;
+    }
+    ul.star-bxw li:nth-child(1) {
+      width: 70%;
+      margin-top: 4px;
+    }
+    ul.star-bxw li:nth-child(2) {
+      width: 30%;
+      text-align: right;
+    }
+    .custom_collection .cart-list .desc .product-title {
+      font-size: 16px;
+    } 
+    .header_sections_data h1 {
+      font-size: 20px;
+      margin-bottom: 25px;
+    }
+    .products_wrapper {
+      max-width: 100%;
+    }
+    .collection_product[data-slick-index='0']:after{
+      display:none;
+    }
+    .collection_product[data-slick-index='2']:after{
+      display:none;
+    }
+    .collection_product[data-slick-index='4']:after{
+      display:none;
+    }
+    .collection_product[data-slick-index='6']:after{
+      display:none;
+    }
+    .collection_product[data-slick-index='8']:after{
+      display:none;
+    }
+    .collection_product[data-slick-index='10']:after{
+      display:none;
+    }
+    .collection_product[data-slick-index='4']:after{
+      content: ''!important;
+      width: 1.5px!important;
+      height: 100%!important;
+      background: black!important;
+      position: absolute!important;
+      left: 0px!important;
+      top: 0!important;
+    }
+    .collection_product[data-slick-index='10']:after{
+      content: ''!important;
+      width: 1.5px!important;
+      height: 100%!important;
+      background: black!important;
+      position: absolute!important;
+      left: 0px!important;
+      top: 0!important;
+    }
+    .collection_product[data-slick-index='8']:after{
+      content: ''!important;
+      width: 1.5px!important;
+      height: 100%!important;
+      background: black!important;
+      position: absolute!important;
+      left: 0px!important;
+      top: 0!important;
+    }
+    a.text-m {
+      font-size:9px;
+    }
+    .collection_product.slick-active:before {
+      content: '';
+      width: 3px;
+      height: 94.3%;
+      background: black;
+      position: absolute;
+      top: 0;
+      left: 99.3%;
+      right: 0;
+      bottom: 0;
+    }
+  } 
+
+</style>
+
+
+{% schema %}
+{
+"name": "Bundle Section",
+"settings": [
+{
+"type":"text",
+"id":"heading",
+"label":"Heading"
+},
+{
+"type":"html",
+"id":"content",
+"label":"Content"
+},
+{
+"type":"collection",
+"id":"col2",
+"label":"Collection"
+}
+]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

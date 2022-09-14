@@ -1,0 +1,65 @@
+{% section 'cart-template' %}
+
+{% section 'cart_bundle' %}
+
+
+<script>
+  $(document).ready(function(){
+    setTimeout(function () {
+      console.clear();
+    },1500);
+
+    var money = $('span.amount.theme-money').attr('money_data');
+    var tot = money/100;
+    if(tot >= 75){
+      $('.custom_collection').hide();
+    }else{
+      $('.custom_collection').show();
+    }
+  });
+
+    $(document).ready(function(){
+    $('.products_wrapper').slick({
+      dots: true,
+      infinite: false,
+      speed: 300,
+      slidesToShow: 3,
+      slidesToScroll: 3,
+      responsive: [
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        }
+      ]
+    });
+
+    });
+  
+  // bundle code
+  $(document).on("click",".custom_bundle_cart",function(e){
+    e.preventDefault();
+    var var_id = $(this).attr('var_id');
+
+      if(var_id != ''){
+        var data ={
+          id:var_id,
+          quantity:"1"
+        };
+        $.ajax({
+          type: "POST",
+          url: "/cart/add.js",
+          data: data,
+          dataType: "json",
+          success: function(result){
+            console.log(result);
+            location.reload();
+          }
+        });
+      }
+    });
+
+    
+</script>

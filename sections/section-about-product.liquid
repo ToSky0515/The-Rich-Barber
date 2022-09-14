@@ -1,0 +1,89 @@
+<div class="blk-bg">
+<div class="container-fluid">
+  {% if section.settings.main_heading != blank %}
+          <h2>{{ section.settings.main_heading }}</h2>
+    {%endif%}
+  <ul class="abt-list">
+    {% for block in section.blocks %}
+    <li>
+      {%- if block.settings.img1 != blank -%}
+         {{block.settings.img1 | img_url: '196x152', scale: 2 | img_tag: block.settings.image.alt }} 
+        {%- endif -%}
+      {% if block.settings.heading != blank %}
+          <h5> {{ block.settings.heading }}</h5>
+      {%endif%}
+      
+      {% if block.settings.paragraph != blank %}
+      {{ block.settings.paragraph }}
+      {%endif%}
+    </li>
+    {%endfor%}
+    
+    
+   
+    
+  </ul>
+  
+</div>
+  </div>
+
+{% schema %}
+{
+  "name": "About The Product",
+  "class": "about-product",
+  "settings": [
+     	 {
+          "id": "main_heading",
+          "type": "text",
+          "label": "Main Heading",
+		  "default":"ABOUT THE PRODUCT"
+        }
+  
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "image",
+      "settings": [
+        
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Text"
+        },
+  		{
+          "id": "paragraph",
+          "type": "richtext",
+          "label": "Text"
+        },
+		{
+         "type": "image_picker",
+        "id":   "img1",
+        "label": "Product Image",
+        "info": "196 x 152px recommended"
+        }
+		
+      ],
+      "limit": 5
+    }
+  ],
+  "presets": [
+    {
+      "name": "About The Product",
+      "category": "PRODUCT DYNAMIC SECTION",
+      "blocks": [
+        {
+          "type": "image",
+          "settings": {
+            
+          }
+        }
+        
+        
+        
+      ]
+    }
+  ]
+}
+
+{% endschema %}

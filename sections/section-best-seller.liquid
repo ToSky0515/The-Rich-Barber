@@ -1,0 +1,266 @@
+<div class="best-seller">
+<div class="container-fluid">
+  {%- if section.settings.main_heading != blank -%}
+  <h2 class="text-left bld">{{section.settings.main_heading}}</h2>
+  {%- endif -%}
+  
+ <div class="row">
+  <div class="col-md-6 bd-r">
+     <div class="row">
+  <div class="col-xs-5 pr-0">
+    <div class="seller-img">
+      <a href="">
+        {%- if section.settings.img1 != blank -%}
+         {{section.settings.img1 | img_url: '316x335', scale: 2 | img_tag: block.settings.image.alt }} 
+        {%- endif -%}
+      </a>
+    </div>
+  	
+  </div>
+  <div class="col-xs-7">
+    <div class="p-area">
+      {%- if section.settings.product_name1 != blank -%}
+    <h4 class="text-left bld">{{section.settings.product_name1}}</h4>
+    {%- endif -%} 
+    {%- if section.settings.desc1 != blank -%}  
+       {{section.settings.desc1}}
+    {%- endif -%} 
+    </div>
+       <ul class="star-bxw">
+          <li>
+            <ul class="star-list">
+              <li><i class="fa fa-star" aria-hidden="true"></i></li>
+              <li><i class="fa fa-star" aria-hidden="true"></i></li>
+              <li><i class="fa fa-star" aria-hidden="true"></i></li>
+              <li><i class="fa fa-star" aria-hidden="true"></i></li>
+              <li><i class="fa fa-star" aria-hidden="true"></i></li>
+            </ul>
+          </li>
+          <li>
+            {%- if section.settings.product_price1 != blank -%} 
+            <div class="prc"><b>{{section.settings.product_price1}}</b></div>
+            {%- endif -%} 
+          </li>
+    </ul>
+            <div class="row">
+          <div class="col-xs-6 pr-2">
+            {% if section.settings.cart_btn1 != blank %}
+             <a class="add-btn" href="{{ section.settings.cart_link1 }}">{{ section.settings.cart_btn1 }}</a>
+            {%endif%}
+            
+          </div>
+          <div class="col-xs-6 pl-2">
+            {% if section.settings.learn_btn1 != blank %}
+            <a href="{{ section.settings.learn_link1 }}" class="learn-btn">{{ section.settings.learn_btn1}}</a>
+            {%endif%}
+           </div>
+        </div>
+       
+       </div>
+</div>
+  	
+  </div>
+ <div class="col-md-6 bd-l">
+     <div class="row">
+  <div class="col-xs-5 pr-0">
+    <div class="seller-img">
+      <a href="">
+        {%- if section.settings.img1 != blank -%}
+         {{section.settings.img1 | img_url: '316x335', scale: 2 | img_tag: block.settings.image.alt }} 
+        {%- endif -%}
+      </a>
+    </div>
+  	
+  </div>
+  <div class="col-xs-7">
+    <div class="p-area">
+      {%- if section.settings.product_name2 != blank -%}
+    <h4 class="text-left bld">{{section.settings.product_name2}}</h4>
+    {%- endif -%} 
+    {%- if section.settings.desc2 != blank -%}  
+       {{section.settings.desc2}}
+    {%- endif -%} 
+    </div>
+        <div class="row">
+          <div class="col-md-6">
+            <ul class="star-list">
+              <li><i class="fa fa-star" aria-hidden="true"></i></li>
+              <li><i class="fa fa-star" aria-hidden="true"></i></li>
+              <li><i class="fa fa-star" aria-hidden="true"></i></li>
+              <li><i class="fa fa-star" aria-hidden="true"></i></li>
+              <li><i class="fa fa-star" aria-hidden="true"></i></li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            {%- if section.settings.product_price2 != blank -%} 
+            <div class="prc"><b>{{section.settings.product_price2}}</b></div>
+            {%- endif -%} 
+          </div>
+       </div>
+            <div class="row">
+          <div class="col-xs-6 pr-2">
+            {% if section.settings.cart_btn2 != blank %}
+             <a class="add-btn" href="{{ section.settings.cart_link2 }}">{{ section.settings.cart_btn2 }}</a>
+            {%endif%}
+            
+          </div>
+          <div class="col-xs-6 pl-2">
+            {% if section.settings.learn_btn2 != blank %}
+            <a href="{{ section.settings.learn_link2 }}" class="learn-btn">{{ section.settings.learn_btn2}}</a>
+            {%endif%}
+           </div>
+        </div>
+       
+       </div> 
+    </div>
+  		<ul class="bt-spc">
+        <li> {% if section.settings.more != blank %}<a href="{{ section.settings.more_link }}">{{ section.settings.more}}</a> {%endif%}</li>
+        <li>{% if section.settings.product_more_btn != blank %}<a href="{{ section.settings.more_link }}" class="view-btn">{{ section.settings.product_more_btn}}</a>{%endif%}</li>
+        </ul>
+  </div>
+</div>
+  </div>
+  </div>
+{% schema %} 
+  {
+    "name": "Best Seller Section old",
+    "settings": [
+		{
+        "id":"main_heading",
+        "type":"text",
+        "label":"Main Heading",
+		"default":"BEST SELLERS"
+        },
+		{
+        "type": "image_picker",
+        "id":   "img1",
+        "label": "First Product Image",
+        "info": "316 x 335px recommended"
+       },
+		{
+        "id":"product_name1",
+        "type":"text",
+        "label":"Product Name 1",
+		"default":"PRO BARBER TOOLS KIT, MODIFIER & SETTER"
+        },
+		{
+        "id":"product_price1",
+        "type":"text",
+        "label":"Product Price",
+		"default":"$ 34.95"
+        },
+		
+		{
+          "id": "desc1",
+          "type": "richtext",
+          "label": "product description",
+		  "default":"<p>About the product will go here in this section. About the product will go here in this section.About the product will go here.</p>"
+        },
+		{
+        "type": "text",
+        "id":   "cart_btn1",
+        "label": "Add To Cart Button",
+		"default":"ADD TO CART"
+        },
+  		{
+          "id": "cart_link1",
+          "type": "url",
+          "label": "Add To Cart Link"
+        },
+
+		{
+        "type": "text",
+        "id":   "learn_btn1",
+        "label": "Learn Button",
+		"default":"LEARN MORE"
+        },
+  		{
+          "id": "learn_link1",
+          "type": "url",
+          "label": "Learn Link"
+        },
+
+		
+		
+		{
+        "type": "image_picker",
+        "id": "img2",
+        "label": "Second Product Image",
+        "info": "316 x 335px recommended"
+       },
+		{
+        "id":"product_name2",
+        "type":"text",
+        "label":"Product Name 2",
+		"default":"N’HANCETM PRO BARBER KIT II"
+        },
+		{
+        "id":"product_price2",
+        "type":"text",
+        "label":"Product Price ",
+		"default":"$ 34.95"
+        },
+		
+		{
+          "id": "desc2",
+          "type": "richtext",
+          "label": "product description",
+		  "default":"<p>About the product will go here in this section. About the product will go here in this section.</p>"
+        },
+		{
+        "type": "text",
+        "id":   "cart_btn2",
+        "label": "Add To Cart Button",
+		"default":"ADD TO CART"
+        },
+  		{
+          "id": "cart_link2",
+          "type": "url",
+          "label": "Add To Cart Link"
+        },
+
+		{
+        "type": "text",
+        "id":   "learn_btn2",
+        "label": "Learn Button",
+		"default":"LEARN MORE"
+        },
+  		{
+          "id": "learn_link2",
+          "type": "url",
+          "label": "Learn Link"
+        },
+
+		{
+        "type": "text",
+        "id":   "more",
+        "label": "Looking for more",
+		"default":"LOOKING FOR MORE"
+        },
+  		{
+          "id": "more_link",
+          "type": "url",
+          "label": "Looking for more link"
+        },
+		{
+        "type": "text",
+        "id":   "product_more_btn",
+        "label": "Looking for more",
+		"default":"VIEW ALL PRODUCTS"
+        },
+  		{
+          "id": "product_more_link",
+          "type": "url",
+          "label": "View all products link"
+        }
+
+	],
+    "presets": [
+        {
+          "category": "HOME DYNAMIC SECTION",
+          "name": "Best Seller and  New Release Section",
+          "settings": {}
+        }
+      ]
+  }
+{% endschema %}

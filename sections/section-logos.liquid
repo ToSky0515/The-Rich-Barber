@@ -1,0 +1,70 @@
+
+<div class="light-grey">
+ <div class="container-fluid">
+  <div class="row">
+     
+        <div class="col-xs-4">
+          {% if section.settings.heading != 'blank' %}
+          <h3>{{section.settings.heading}}</h3>
+          {%endif%}
+        </div>
+    
+    <div class="col-xs-8">  
+       <div class="logos-slider">
+          {%- for block in section.blocks -%}
+          <div class="col-xs-4">
+          {%- if block.settings.logo1 != blank -%}
+          {{block.settings.logo1 | img_url: '310x86', scale: 2 | img_tag: block.settings.image.alt,'logos-slider' }} 
+           {%- endif -%}
+         </div>
+          {%endfor%}  
+        </div>
+   </div>
+
+  </div>
+</div>
+</div>  
+ 
+
+{% schema %} 
+  {
+    "name": "Logos Section",
+    "settings": [
+		{
+        "id":"heading",
+        "type":"text",
+        "label":"Heading",
+		"default":"AS SEEN IN"
+        }
+	],
+   "blocks": [
+      {
+         "type": "image",
+         "name": "image",
+         "limit": 10,
+         "settings": [
+            {
+            "type": "image_picker",
+            "id": "logo1",
+            "label": "Image 1",
+            "info": "310px x 86px recommended"
+            }
+         ]
+      }
+   ],
+    
+    "presets": [
+        {
+          "category": "HOME DYNAMIC SECTION",
+          "name": "Logos Section",
+          "settings": {}
+        }
+      ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

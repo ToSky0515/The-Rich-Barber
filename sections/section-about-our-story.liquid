@@ -1,0 +1,148 @@
+<div class="abt-our-stry">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-sm-6 desktop-sect">
+            <div class="qualities desktop-first top-m">
+               <img src="{{ section.settings.image_q1 | img_url: 'master' }}"> 
+               <h4>{{ section.settings.title_q1 }}</h4>
+               <p>{{ section.settings.info_q1 }}</p>
+            </div>
+            <div class="qualities desktop-third spc-thrd mobc dsk-v">
+               <img src="{{ section.settings.image_q2 | img_url: 'master' }}"> 
+               <h4>{{ section.settings.title_q2 }}</h4> 
+               <p class="q-p-two">{{ section.settings.info_q2 }}</p>
+            </div>
+            <div class="qualities desktop-second top-m">
+               <img src="{{ section.settings.image_q3 | img_url: 'master' }}"> 
+               <h4>{{ section.settings.title_q2 }}</h4>
+               <p>{{ section.settings.info_q3 }}</p>
+            </div>
+            <div class="clearfix"></div>
+         </div>
+        
+         <div class="col-sm-6">
+            <div class="our-content tp-spc mob-in">
+               <img class="our-c-mob" src="//cdn.shopify.com/s/files/1/0495/0661/files/local-only_165x170@2x.png?v=1623227915">
+               <h2>{{ section.settings.title_s1 }}</h2>
+               <p>{{ section.settings.story_text }}</p>
+               <div class="audacity-par-mob">
+                  THE IMPULSE FOR SOMETHING NEW, HAS LONG-LASTING EFFECTS. WE DON’T JUST SELL ANY PRODUCT, WE CREATE PURPOSEFUL PRODUCTS WITH INNOVATIVE INGREDIENTS AND MATERIALS THAT SIMPLIFY YOUR EXPERIENCES WITH PROFOUND IMPACT(S).
+               </div>
+               <div class="qualities desktop-third spc-thrd mobc mob-v">
+                  <img src="//cdn.shopify.com/s/files/1/0495/0661/files/auda-city_165x170@2x.png?v=1623227951"> 
+                  <h4>AUDACITY IS IN OUR ROOTS</h4>
+                  <p>WE BELIEVE IN HAVING GUTS.</p>
+                  <p class="q-p-two">The impulse for something new, has long-lasting effects. We don’t just sell any product, we create purposeful products with innovative ingredients and materials that simplify your experiences with profound impact(s).</p>
+               </div>
+               <div class="rev-mob">
+                  <img src="//cdn.shopify.com/s/files/1/0495/0661/files/revolution_165x170@2x.png?v=1623227937"> 
+                  <h4>A REVOLITIONARY PERSPECTIVE</h4>
+                  <p>WE BELIEVE IN BELIEVING.</p>
+                  <p>FOR THE OPTIMIST. FOR THE PIONEER. FOR THE MAN THAT NEVER SAYS “NO”, WE'RE DESIGNED WITHIN AND FOR YOU. IT ALL STARTS FROM A FRESH PERSPECTIVE. RICH MINDSETS, BRING RICH OUTCOMES.</p>
+               </div>
+               <div class="q-last-p">
+                  {{ section.settings.story_text1 }}
+               </div>
+               <a class="desk-a" href="{{ section.settings.btn_link }}">{{ section.settings.btn_text }}</a>
+               <div class="sig"><img src="//cdn.shopify.com/s/files/1/0495/0661/files/signature_1926f3c4-c453-4950-8bf2-8bb8413357a8_362x101@2x.png?v=1623230352"> <span>CHUKA  TORRES, CEO</span>
+               </div>
+            </div>
+         </div>
+        
+      </div>
+   </div>
+</div>
+
+
+
+{% schema %}
+  {
+    "name": "Our Story",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Left Section"
+      },
+      {
+      "type": "image_picker",
+      "id": "image_q1",
+      "label": "Image"
+      },
+      {
+      "type": "text",
+      "id": "title_q1",
+      "label": "Title"
+      },
+      {
+      "type": "textarea",
+      "id": "info_q1",
+      "label": "info"
+      },
+     {
+      "type": "image_picker",
+      "id": "image_q2",
+      "label": "Image"
+      },
+      {
+      "type": "text",
+      "id": "title_q2",
+      "label": "Title"
+      },
+      {
+      "type": "textarea",
+      "id": "info_q2",
+      "label": "info"
+      },
+     {
+      "type": "image_picker",
+      "id": "image_q3",
+      "label": "Image"
+      },
+      {
+      "type": "text",
+      "id": "title_q3",
+      "label": "Title"
+      },
+      {
+      "type": "textarea",
+      "id": "info_q3",
+      "label": "info"
+      },
+ 	 {
+        "type": "header",
+        "content": "Right Section"
+      },
+     {
+      "type": "text",
+      "id": "title_s1",
+      "label": "Story Title"
+      },
+     {
+      "type": "textarea",
+      "id": "story_text",
+      "label": "Story Text"
+      },
+     {
+      "type": "textarea",
+      "id": "story_text1",
+      "label": "Story Text"
+      },
+     {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Button Link"
+      },
+	{
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Text"
+      }
+	] 
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,82 @@
+<div class="faqbg">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-5">
+      <div class="inst-sec">
+        <h3>All Product Instructions</h3>
+        <h5>N’Hance<sup>TM</sup> Pro Barber Kit I</h5>
+        <span><a href="">video</a>  /  <a href="https://cdn.shopify.com/s/files/1/0495/0661/files/RichBarber-ProBarberKitI-Instructions-RasterFinal.pdf?v=1643920416">Instructional</a></span>
+        <h5>N’Hance<sup>TM</sup> Pro Barber Kit II</h5>
+        <span><a href="https://www.youtube.com/watch?v=UehXZmjPlPA">video</a>  /  <a href="https://cdn.shopify.com/s/files/1/0495/0661/files/RichBarber-ProBarberKitII-Instructions.pdf?v=1643925055">Instructional</a></span>
+        <h5>N’Hance<sup>TM</sup> Hold Spray</h5>
+        <span><a href="">video</a>  /  <a href="https://cdn.shopify.com/s/files/1/0495/0661/files/RichBarber-HoldSpray-Instructions-Final_11c1a5a0-1e10-48bf-8793-ff1b9d6d5d6e.pdf?v=1643925018">Instructional</a></span>
+        <h5>N’Hance<sup>TM</sup> Hair Fibers</h5>
+        <span><a href="https://www.youtube.com/watch?v=9C2kp3uKJko">video</a>  /  <a href="https://cdn.shopify.com/s/files/1/0495/0661/files/RichBarber-StyleEnhanceHairFibers-Instructions-Final_5e0ff361-3c03-4f47-84d0-43c4a7fb56dc.pdf?v=1643925055">Instructional</a></span>
+        <h5>n’hance<sup>TM</sup> Application Pump</h5>
+        <span><a href="">video</a>  /  <a href="https://cdn.shopify.com/s/files/1/0495/0661/files/RichBarber-ApplicationPump-Instructions-Final_f7a52d57-c598-4f43-a2e4-154820591887.pdf?v=1643925018">Instructional</a></span>
+        <h5>n’hance<sup>TM</sup> Application Cards</h5>
+        <span><a href="">video</a>  /  <a href="https://cdn.shopify.com/s/files/1/0495/0661/files/RichBarber-ApplicationCards-Instructions-Final_10b5a28a-2231-49a1-ab1c-a1f031da73ed.pdf?v=1643925018">instructional</a></span>
+        <h5>Razor Holder</h5>
+        <span><a href="https://www.youtube.com/watch?v=hvXyV10pfLY">video</a>  /  <a href="https://cdn.shopify.com/s/files/1/0495/0661/files/RichBarber-RazorHolder-Instructions-Raster.pdf?v=1643925055">Instructional</a></span>
+        <h5>FlashComb</h5>
+        <span><a href="https://www.youtube.com/watch?v=EH37xNah9tg">video</a>  /  <a href="https://cdn.shopify.com/s/files/1/0495/0661/files/RichBarber-FlashComb-Instructions-Final_95366a2a-6bb2-457b-83f4-1e016d0661c7.pdf?v=1643925018">Instructional</a></span>
+        <h5>10 Second Blade Setter<sup>TM</sup></h5>
+        <span><a href="">video</a>  /  <a href="https://cdn.shopify.com/s/files/1/0495/0661/files/RichBarber-OnTheMoneyBladeSetter-Instructions-Final_a27f697b-c3b0-4ac5-9102-e22f0aeae12a.pdf?v=1643925018">Instructional</a></span>
+        <h5>1 Minute Blade Modifier<sup>TM</sup></h5>
+        <span><a href="https://www.youtube.com/watch?v=p2oPxQRllo4">video</a>  /  <a href="https://cdn.shopify.com/s/files/1/0495/0661/files/RichBarber-BladeModifier-Instructions-Final_55bfd897-ab5d-4ed3-8b2f-e8ed3d4b6436.pdf?v=1643925018">Instructional</a></span>
+        <h5>Pro Rich Beard Oil</h5>
+        <span><a href="https://www.youtube.com/watch?v=ZIBOyrTBqZc">video</a>  /  <a href="">Instructional</a></span>
+        <h5>Pro Rich Shampoo & Conditioner</h5>
+        <span><a href="https://www.youtube.com/watch?v=t0BSNQXoDaE">video</a>  /  <a href="">Instructional</a></span>
+      </div>
+    </div>
+    <div class="col-sm-7">
+    	<div class="faq-ot faq-custom">
+          <h2>FAQS</h2>
+          <div class="accordion_container">
+          {% for block in section.blocks %}
+              {% if block.settings.question != blank %}
+                <div class="accordion_head">{{ block.settings.question }}<span class="plusminus">+</span>
+              {%endif%}
+            </div>
+            {% if block.settings.answer != blank %}
+              <div class="accordion_body" style="display: none;">
+                {{ block.settings.answer }}
+              </div>
+            {%endif%}
+          {%endfor%}
+
+</div>
+      </div>
+    
+  </div>
+</div>
+  </div>  
+</div>
+
+
+{% schema %}
+   {
+    "name": "FAQ Section",
+    "settings": [],
+	 "blocks": [
+	  {
+		"type":"text",
+		"name":"Question/answers",
+		 "settings":[
+			{
+              "id":"question",
+              "type":"text",
+              "label":"the questions"	
+			},
+			
+			{
+              "id":"answer",
+              "type":"richtext",
+              "label":"the answers"	
+			}
+		]
+	  }
+	]
+  }
+{% endschema %}

@@ -1,0 +1,70 @@
+<div class="blk-bg" id="">
+  <a href="https://www.youtube.com/user/chukt916" target="_blank">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 col-xs-5">
+        {%- if section.settings.title != blank -%}
+        <h3 class="h-a dsk-view">{{section.settings.title}}</h3>
+         <h3 class="h-a-mob mob-view">{{section.settings.title_mobile}}</h3>
+        {%- endif -%}
+      </div>   
+      <div class="col-sm-6 col-xs-7 pl-0">
+        <div class="yout">
+          {%- if section.settings.logo != blank -%}
+                {{section.settings.logo | img_url: '86x38', scale: 2 | img_tag: block.settings.image.alt,'you-m' }} 
+          {%- endif -%}
+          {%- if section.settings.paragraph != blank -%}
+           {{section.settings.paragraph}}
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+    </div>  </a>
+</div>
+{% schema %} 
+  {
+    "name": "Youtube bar Section",
+    "settings": [
+
+		{
+        "id":"title",
+        "type":"text",
+        "label":"Heading",
+		"default":"Want to learn or see more?"
+        },
+{
+        "id":"title_mobile",
+        "type":"text",
+        "label":"Heading for mobile",
+		"default":"WANNA LEARN MORE?"
+        },
+		{
+        "type": "image_picker",
+        "id": 	"logo",
+        "label": "Youtube Logo",
+        "info": "86 x 38px recommended"
+       },
+		{
+        "id":"paragraph",
+        "type":"richtext",
+        "label":"Paragraph",
+		"default":"<p>subscribe to our youtube for instructions, video how to’s + exclusive cuts using our tools</p>"
+        }
+		
+		
+	],
+    "presets": [
+        {
+          "category": "HOME DYNAMIC SECTION",
+          "name": "Black youtube Bar Section",
+          "settings": {}
+        }
+      ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

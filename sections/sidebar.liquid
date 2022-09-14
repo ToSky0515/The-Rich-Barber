@@ -1,0 +1,15 @@
+{% render 'sidebar_nav-main' with section.settings.menu_main_select %}
+{% if template contains 'collection' %}{% render 'filter-menu' %}{% endif %}
+
+{% schema %}
+  {
+    "name": "Section name",
+    "settings": []
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

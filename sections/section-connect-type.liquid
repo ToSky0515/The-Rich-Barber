@@ -1,0 +1,138 @@
+<style>
+    #section-id-{{section.id}} {
+        padding-bottom: 20px;
+        color: black;
+    }
+    #section-id-{{section.id}} .content {
+        width: 1300px;
+        margin: auto;
+        display: flex;
+        margin-bottom: 60px;
+    }
+    #section-id-{{section.id}} .connect-item {
+        width: 33.33%;
+        padding: 50px 0px;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    #section-id-{{section.id}} .connect-item h2 {
+        font-size: 22pt;
+        font-weight: bold;
+        font-family: Avenir;
+    }
+    #section-id-{{section.id}} .connect-item h3 {
+        margin-top: 0pt;
+        font-size: 18pt;
+        font-weight: bold;
+        font-family: Avenir;
+    }
+    #section-id-{{section.id}} .connect-item p {
+        font-size: 11pt;
+        width: 290px;
+        margin: auto;
+        margin-bottom: 30px;
+        font-family: Helvetica;
+    }
+    #section-id-{{section.id}} .connect-item a {
+        font-size: 14pt;
+        padding: 10px 35px;
+        color: white;
+        background-color: black;
+        font-family: Helvetica;
+    }
+    #section-id-{{section.id}} .connect-item:not(:first-child) .connect-item-content {
+        border-left: 3px solid black;
+    }
+    #section-id-{{section.id}} h1 {
+        font-size: 27pt;
+        font-family: Avenir;
+    }
+    @media (max-width: 1200px) {
+        #section-id-{{section.id}} .content {
+            width: 100%;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        #section-id-{{section.id}} .connect-item {
+            width: 50%;
+        }
+        #section-id-{{section.id}} .connect-item:last-child .connect-item-content {
+            border-left: unset;
+        }
+    }
+     @media (max-width: 800px) {
+        #section-id-{{section.id}} .connect-item {
+             width: 80%;
+        }
+        #section-id-{{section.id}} .connect-item .connect-item-content {
+            border-left: unset !important;
+        }
+     }
+</style>
+<section id="section-id-{{section.id}}">
+    <div class="content">
+        {% for block in section.blocks%}
+            <div class="connect-item">
+                <img src="{{block.settings.item_img | img_url:'147px'}}">
+                <div class="connect-item-content">
+                    <h2>{{block.settings.item_header}}</h2>
+                    <h3>{{block.settings.item_sub_header}}</h3>
+                    <p>{{block.settings.item_desc}}</p>
+                </div>
+                <a href="{{block.settings.btn_url}}">{{block.settings.btn_text}}</a>
+            </div>
+        {% endfor %}
+    </div>
+    <h1>{{section.settings.title}}</h1>
+</section>
+{% schema %} 
+  {
+    "name": "Connect Type",
+    "settings": [
+		{
+            "id":"title",
+            "type":"text",
+            "label":"Heading",
+            "default":"GET THE DETAILS"
+        }
+	],
+    "blocks": [
+        {
+            "type": "connect_item",
+            "name": "Connect Item",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "item_img",
+                    "label": "Item Image"
+                },
+                {
+                    "type": "text",
+                    "id": "item_header",
+                    "label": "Item Header"
+                },
+                {
+                    "type": "text",
+                    "id": "item_sub_header",
+                    "label": "Item Sub Header"
+                },
+                {
+                    "type": "textarea",
+                    "id": "item_desc",
+                    "label": "Item Description"
+                },
+                {
+                    "type": "text",
+                    "id": "btn_text",
+                    "label": "Button Text"
+                },
+                {
+                    "type": "url",
+                    "id": "btn_url",
+                    "label": "Button URL"
+                }
+            ]
+        }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,70 @@
+<div class="gallery-area">
+<div class="container-fluid">
+  <!-- 282x275 -->
+  
+  {% if section.settings.main_heading != blank %}
+          <h2>{{ section.settings.main_heading }}</h2>
+    {%endif%}
+  <ul class="gal-area clearfix">
+    {% for block in section.blocks %}
+    <li>
+      <a data-fancybox="gallery" href="{{block.settings.img | img_url: '282x275'}}">
+      <div class="overlay-bgz"></div>
+        {%- if block.settings.img != blank -%}
+         {{block.settings.img | img_url: '282x275', scale: 2 | img_tag: block.settings.image.alt }} 
+        {%- endif -%} 
+      </a>
+    </li>
+    
+     {%endfor%}
+   
+  </ul></div>
+</div>
+{% schema %}
+{
+  "name": "Gallery Section",
+  "class": "barber",
+  "settings": [
+     	 {
+          "id": "main_heading",
+          "type": "text",
+          "label": "Main Heading",
+		  "default":"SEE SOME OF OUR RICH BARBERS"
+        }
+  
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "image",
+      "settings": [
+        {
+        "type": "image_picker",
+        "id":   "img",
+        "label": " Image",
+        "info": "282 x 275px recommended"
+       }
+		
+      ]
+      
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gallery Section",
+      "blocks": [
+        {
+          "type": "image",
+          "settings": {
+            
+          }
+        }
+        
+        
+        
+      ]
+    }
+  ]
+}
+
+{% endschema %}

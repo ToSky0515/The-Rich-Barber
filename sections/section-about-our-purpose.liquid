@@ -1,0 +1,40 @@
+<div class="prp-ot">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="h-st">
+        <h2>{{ section.settings.title }}</h2>
+      </div>
+    </div>
+    <div class="col-sm-8">
+    {{ section.settings.info }} 
+    </div>
+  </div>
+</div>
+  </div>
+{% schema %}
+  {
+    "name": "About Our Purpose Section",
+    "settings": [
+		{
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "info",
+          "label": "Info",
+		 "default": "<p>Media with text</p>"
+        }
+
+
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

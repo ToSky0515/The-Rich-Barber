@@ -1,0 +1,259 @@
+
+<div class="our-bgz">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 desktop-sect">
+      <div class="qualities desktop-first">
+        
+       
+        {%- if section.settings.logo1 != blank -%}
+         {{section.settings.logo1 | img_url: '165x170', scale: 2 | img_tag: block.settings.image.alt }} 
+        {%- endif -%}
+        
+        {%- if section.settings.title1 != blank -%}
+        <h4>{{section.settings.title1}}</h4>
+        {%- endif -%}
+        
+        {%- if section.settings.paragraph1 != blank -%}
+          {{section.settings.paragraph1}}
+        {%- endif -%}
+        
+      </div>
+         <div class="qualities desktop-second">
+        {%- if section.settings.logo2 != blank -%}
+                {{section.settings.logo2 | img_url: '165x170', scale: 2 | img_tag: block.settings.image.alt }} 
+         {%- endif -%}
+         {%- if section.settings.title2 != blank -%}
+        <h4>{{section.settings.title2}}</h4>
+        {%- endif -%}
+        
+        {%- if section.settings.paragraph2 != blank -%}
+        {{section.settings.paragraph2}}
+        {%- endif -%}
+      </div>
+         <div class="qualities desktop-third">
+        {%- if section.settings.logo3 != blank -%}
+         {{section.settings.logo3 | img_url: '165x170', scale: 2 | img_tag: block.settings.image.alt }} 
+        {%- endif -%}
+           {%- if section.settings.title3 != blank -%}
+             <h4>{{section.settings.title3}}</h4>
+            {%- endif -%}
+        
+          {%- if section.settings.paragraph3 != blank -%}
+                {{section.settings.paragraph3}}
+          {%- endif -%}
+
+      
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="col-md-6">
+      <div class="our-content  desktop-sect">
+        {%- if section.settings.heading != blank -%}
+     	 <h2>{{section.settings.heading}}</h2>
+        {%endif%}
+        {%- if section.settings.text != blank -%}
+        {{section.settings.text}}
+        {%endif%}
+        {% if section.settings.button_label != blank %}
+        <a href="{{ section.settings.link }}">{{ section.settings.button_label | escape }}</a>
+         {%endif%}
+       
+        <div class="sig">
+         
+          {%- if section.settings.sign_img != blank -%}
+                {{section.settings.sign_img | img_url: '362x101', scale: 2 | img_tag: block.settings.image.alt }} 
+         {%- endif -%}
+          
+          {%- if section.settings.sign_text != blank -%}
+          <span>{{section.settings.sign_text}}</span>
+          {% endif%}
+        </div>
+        
+        
+ </div>
+  </div> 
+            <div class="col-md-6 mobile-sect">
+            <div class="qualities mobile-first">
+        
+       
+        {%- if section.settings.logo1 != blank -%}
+         {{section.settings.logo1 | img_url: '165x170', scale: 2 | img_tag: block.settings.image.alt }} 
+        {%- endif -%}
+        
+        {%- if section.settings.title1 != blank -%}
+        <h4>{{section.settings.title1}}</h4>
+        {%- endif -%}
+        
+        {%- if section.settings.paragraph1 != blank -%}
+          {{section.settings.paragraph1}}
+        {%- endif -%}
+        
+      </div>
+         <div class="qualities mobile-second">
+        {%- if section.settings.logo2 != blank -%}
+                {{section.settings.logo2 | img_url: '165x170', scale: 2 | img_tag: block.settings.image.alt }} 
+         {%- endif -%}
+         {%- if section.settings.title2 != blank -%}
+        <h4>{{section.settings.title2}}</h4>
+        {%- endif -%}
+        
+        {%- if section.settings.paragraph2 != blank -%}
+        {{section.settings.paragraph2}}
+        {%- endif -%}
+      </div>
+         <div class="qualities mobile-third">
+        {%- if section.settings.logo3 != blank -%}
+         {{section.settings.logo3 | img_url: '165x170', scale: 2 | img_tag: block.settings.image.alt }} 
+        {%- endif -%}
+           {%- if section.settings.title3 != blank -%}
+             <h4>{{section.settings.title3}}</h4>
+            {%- endif -%}
+        
+          {%- if section.settings.paragraph3 != blank -%}
+                {{section.settings.paragraph3}}
+          {%- endif -%}
+
+      
+      </div>
+              <div class="clearfix"></div>
+                    <div class="our-content">
+        {%- if section.settings.heading != blank -%}
+     	 <h2>{{section.settings.heading}}</h2>
+        {%endif%}
+        {%- if section.settings.text != blank -%}
+        {{section.settings.text}}
+        {%endif%}
+        {% if section.settings.button_label != blank %}
+        <a href="{{ section.settings.link }}">{{ section.settings.button_label | escape }}</a>
+         {%endif%}
+       
+        <div class="sig">
+         
+          {%- if section.settings.sign_img != blank -%}
+                {{section.settings.sign_img | img_url: '362x101', scale: 2 | img_tag: block.settings.image.alt }} 
+         {%- endif -%}
+          
+          {%- if section.settings.sign_text != blank -%}
+          <span>{{section.settings.sign_text}}</span>
+          {% endif%}
+        </div>
+        
+        
+ </div>
+              <div class="mob-viw">
+              <div class="sig"><img src="//cdn.shopify.com/s/files/1/0495/0661/files/signature_1926f3c4-c453-4950-8bf2-8bb8413357a8_362x101@2x.png?v=1623230352"> <span>CHUKA  TORRES, CEO</span>
+         
+        </div>   <a class="our-c" href="/collections">LEARN MORE</a></div>
+      </div>
+   
+</div>
+</div>
+</div>
+{% schema %} 
+  {
+    "name": "Our Story Section",
+    "settings": [
+
+		{
+        "type": "image_picker",
+        "id": "logo1",
+        "label": "LOCALS ONLY",
+        "info": "165 x 170px recommended"
+       },
+		{
+        "id":"title1",
+        "type":"text",
+        "label":"Heading",
+		"default":"LOCALS ONLY"
+        },
+		{
+          "id": "paragraph1",
+          "type": "richtext",
+          "label": "Paragraph",
+		  "default":"<p>We believe in a thought-provoking force.</p>"
+        },
+
+		{
+        "type": "image_picker",
+        "id": "logo2",
+        "label": "A REVOLITIONARY PERSPECTIVE",
+        "info": "165 x 170px recommended"
+       },
+		{
+        "id":"title2",
+        "type":"text",
+        "label":"Heading 2",
+		"default":"A REVOLITIONARY PERSPECTIVE"
+        },
+		{
+          "id": "paragraph2",
+          "type": "richtext",
+          "label": "Paragraph 2",
+		  "default":"<p>WE BELIEVE IN BELIEVING.</p>"
+        },
+		{
+        "type": "image_picker",
+        "id": "logo3",
+        "label": "AUDACITY IS IN OUR ROOTS",
+        "info": "165 x 170px recommended"
+       },
+		{
+        "id":"title3",
+        "type":"text",
+        "label":"Heading 3",
+		"default":"AUDACITY IS IN OUR ROOTS"
+        },
+		{
+          "id": "paragraph3",
+          "type": "richtext",
+          "label": "Paragraph 3",
+		  "default":"<p>WE BELIEVE IN HAVING GUTS.</p>"
+        },
+		{
+        "id":"heading",
+        "type":"text",
+        "label":"Main Heading",
+		"default":"OUR STORY"
+        },
+		{
+          "id": "text",
+          "type": "richtext",
+          "label": "Our Story Text",
+		  "default":"<p> CALIFORNIA-BASED COMPANY. WE STARTED IN SACRAMENTO IN 2012, OPENING WITH OUR FIRST BARBERSHOP IN 2015. FIVE YEARS LATER - WE’RE CREATING EXPERIENCES IN TWO CITIES, WITH THREE BARBER STUDIOS AND A TEAM OF BARBERS. EXPANDING ONLINE - OUR TEN IDEA-MAKERS CARRY OUR VISION TO THE PIXELATED STRATOSPHERE..</p>"
+        },
+		{
+        "type": "text",
+        "id": "button_label",
+        "label": "Button label"
+        },
+  		{
+          "id": "link",
+          "type": "url",
+          "label": "Learn More Link"
+        },
+		{
+		"type": "image_picker",
+        "id": "sign_img",
+        "label": "Signature Image",
+        "info": "362 x 101px recommended"
+       },
+        {
+        "id":"sign_text",
+        "type":"text",
+        "label":"Signature Text",
+        "default":"CHUKA  TORRES, CEO"
+        }
+		
+
+        
+	],
+    "presets": [
+        {
+          "category": "HOME DYNAMIC SECTION",
+          "name": "Our story Section",
+          "settings": {}
+        }
+      ]
+  }
+{% endschema %}

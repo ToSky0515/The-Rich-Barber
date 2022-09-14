@@ -1,0 +1,160 @@
+<div class="wht-bg">
+    <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-6">
+              <div class="p-box">
+                {% if section.settings.hair_link != blank%}
+                     <a href="{{ section.settings.hair_link }}">
+                {%endif%}
+                
+                {%- if section.settings.logo1 != blank -%}
+                {{section.settings.logo1 | img_url: '408x339', scale: 2 | img_tag: block.settings.image.alt }} 
+                {%- endif -%}
+                {%- if section.settings.hair != blank -%}
+              	<h4>{{section.settings.hair}}</h4>
+                {%- endif -%}
+                </a>
+              </div> 
+            </div>
+
+            <div class="col-md-3 col-sm-6 col-xs-6">
+                <div class="p-box">
+                   {% if section.settings.beard_link != blank%}
+                     <a href="{{ section.settings.beard_link }}">
+                    {%endif%}
+                     {%- if section.settings.logo2 != blank -%}
+                       {{section.settings.logo2 | img_url: '408x339', scale: 2 | img_tag: block.settings.image.alt }} 
+                      {%- endif -%}
+                   {%- if section.settings.beard != blank -%}
+              	     <h4>{{section.settings.beard}}</h4>
+                    {%- endif -%}
+                  </a>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-6">
+                 <div class="p-box">
+                   {% if section.settings.tools_link != blank%}
+                     <a href="{{ section.settings.tools_link }}">
+                    {%endif%}
+                      {%- if section.settings.logo3 != blank -%}
+                       {{section.settings.logo3 | img_url: '408x339', scale: 2 | img_tag: block.settings.image.alt }} 
+                      {%- endif -%}
+                     {%- if section.settings.tools != blank -%}
+              	         <h4>{{section.settings.tools}}</h4>
+                     {%- endif -%}
+                   </a>
+                 </div>
+            </div>
+             <div class="col-md-3 col-sm-6 col-xs-6">
+                  <div class="p-box">
+                     {% if section.settings.accessories_link != blank%}
+                     <a href="{{ section.settings.accessories_link }}">
+                     {%endif%} 
+                      {%- if section.settings.logo4 != blank -%}
+                       {{section.settings.logo4 | img_url: '408x339', scale: 2 | img_tag: block.settings.image.alt }} 
+                      {%- endif -%}
+                      {%- if section.settings.accessories != blank -%}
+              	         <h4>{{section.settings.accessories}}</h4>
+                     {%- endif -%}
+                    </a>
+               </div> 
+             </div>
+           
+      </div>
+     </div>  
+</div>
+
+{% schema %} 
+  {
+    "name": "Four Categories Section",
+    "settings": [
+
+		{
+        "type": "image_picker",
+        "id": "logo1",
+        "label": "Hair",
+        "info": "408 x 339px recommended"
+       },
+		{
+        "id":"hair",
+        "type":"text",
+        "label":"Heading",
+		"default":"Hair"
+        },
+		{
+          "id": "hair_link",
+          "type": "url",
+          "label": "Hair Link"
+        },
+
+        {
+        "type": "image_picker",
+        "id": "logo2",
+        "label": "Beard",
+        "info": "408 x 339px recommended"
+       },
+		{
+        "id":"beard",
+        "type":"text",
+        "label":"Heading",
+		"default":"Beard"
+        },
+		{
+          "id": "beard_link",
+          "type": "url",
+          "label": "Beard Link"
+        },
+		
+		{
+        "type": "image_picker",
+        "id": "logo3",
+        "label": "Tools",
+        "info": "408 x 339px recommended"
+       },
+		
+		{
+        "id":"tools",
+        "type":"text",
+        "label":"Heading",
+		"default":"Tools"
+        },
+		{
+          "id": "tools_link",
+          "type": "url",
+          "label": "Tools Link"
+        },
+		{
+        "type": "image_picker",
+        "id": "logo4",
+        "label": "Accessories",
+        "info": "408 x 339px recommended"
+       },
+		
+		{
+        "id":"accessories",
+        "type":"text",
+        "label":"Heading",
+		"default":"Accessories"
+        },
+		{
+          "id": "accessories_link",
+          "type": "url",
+          "label": "Accessories Link"
+        }
+	],
+    "presets": [
+        {
+          "category": "HOME DYNAMIC SECTION",
+          "name": "Category Section",
+          "settings": {}
+        }
+      ]
+  }
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

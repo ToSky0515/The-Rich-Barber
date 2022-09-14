@@ -1,0 +1,77 @@
+
+  <style>
+    #shopify-section-{{ section.id }} {
+      background-color: {{ section.settings.background_color }};
+    }
+</style>
+   
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  {% assign count = 0 %}
+  <div class="carousel-inner">
+    {% for block in section.blocks %}
+    {% if count == 0 %} <div class="item active"> {%else%}<div class="item">{%endif%}
+    {% assign count = count | plus: 1 %}
+      <div class="cust-cap">
+        {% if block.settings.title != blank %}
+        <p>  {{ block.settings.title }}</p>
+        {%endif%}
+      </div>
+    </div>
+    {%endfor%}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Section Top bar",
+  "class": "topbar",
+  "settings": [
+      
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Section background color",
+        "default": "#000000"
+      }
+  ],
+  "blocks": [
+    {
+      "type": "highlight",
+      "name": "Highlight",
+      "settings": [
+        
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Text"
+        },
+        {
+          "id": "link",
+          "type": "url",
+          "label": "Link"
+        }
+		
+      ],
+      "limit": 5
+    }
+  ],
+  "presets": [
+    {
+      "name": "Top Announcement Bar",
+      "category": "Home Dynamic Section",
+      "blocks": [
+        {
+          "type": "highlight",
+          "settings": {
+            
+          }
+        }
+        
+        
+        
+      ]
+    }
+  ]
+}
+
+{% endschema %} 

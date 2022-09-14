@@ -1,0 +1,43 @@
+<div class="cat-bg">
+<div class="collection_bnr">
+  <img src="{{ section.settings.banner_img | img_url: "master"}}"  alt="" display="block" class="rimage__image" />
+  </div>
+  <div class="central">
+    <div class="content transparent">
+      <h1 class="line-1 feature-header no-margin" data-cc-animate>{{section.settings.title}}</h1>
+    </div>
+  </div>
+</div>
+
+<div class="bread-outer collection">
+  {% render 'breadcrumbs' %}
+</div>
+
+<style>
+    #pb-learn {
+        margin-top: 180px;
+    }
+    @media (min-width: 320px) and (max-width: 767px) {
+        #pb-learn {
+            margin-top: 148px !important;
+        }
+    }
+</style>
+{% schema %} 
+  {
+    "name": "Banner",
+    "settings": [
+		{
+            "id":"title",
+            "type":"text",
+            "label":"Heading",
+            "default":"CONNECT"
+        },
+        {
+            "id":"banner_img",
+            "type":"image_picker",
+            "label":"Banner Image"
+        }
+	]
+  }
+{% endschema %}

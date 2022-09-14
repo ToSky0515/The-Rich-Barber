@@ -1,0 +1,78 @@
+<div class="razor-two">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-6 col-sm-8">
+				<div class="im-one">
+					<img src="https://cdn.shopify.com/s/files/1/0495/0661/files/arrow-one.png?v=1623702702">
+					</div>
+					<div class="im-two">
+						<img src="https://cdn.shopify.com/s/files/1/0495/0661/files/arrow-two.png?v=1623702702">
+						</div>
+						<div class="im-three">
+							<img src="https://cdn.shopify.com/s/files/1/0495/0661/files/arrow-three.png?v=1623702702">
+							</div> 
+						</div>
+						<div class="col-xs-6 col-sm-4">
+                          	{% for block in section.blocks %}
+							<div class="wht-hd">
+								{% if block.settings.heading != blank %}
+                                 <h2> {{ block.settings.heading }}</h2>
+                                  {%endif%}
+                                  {% if block.settings.paragraph != blank %}
+                                  {{ block.settings.paragraph | Escape }}
+                                  {%endif%}
+							</div>
+                          {%endfor%}
+						</div>
+					</div>
+				</div>
+			</div>
+{% schema %}
+{
+  "name": "RAZOR SECTION",
+  "class": "about-product",
+  "settings": [
+     	 
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "text",
+      "settings": [
+		
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Text"
+        },
+  		{
+          "id": "paragraph",
+          "type": "richtext",
+          "label": "Text"
+        }
+		
+		
+      ],
+      "limit": 4
+    }
+  ],
+  "presets": [
+    {
+      "name": "RAZOR SECTION",
+      "category": "PRODUCT DYNAMIC SECTION",
+      "blocks": [
+        {
+          "type": "text",
+          "settings": {
+            
+          }
+        }
+        
+        
+        
+      ]
+    }
+  ]
+}
+
+{% endschema %}

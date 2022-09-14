@@ -1,0 +1,98 @@
+<style>
+    #section-id-{{section.id}} {
+        padding-top: 50px;
+        padding-bottom: 50px;
+        background-color: #ebeaea;
+        text-transform: uppercase;
+        color: black;
+    }
+    #section-id-{{section.id}} .content {
+        width: 800px;
+        margin: auto;
+        display: flex;
+        justify-content: space-around;
+    }
+    #section-id-{{section.id}} .connect-item {
+        width: auto;
+        text-align: center;
+    }
+    #section-id-{{section.id}} .connect-item h2 {
+        font-size: 22pt;
+        font-weight: bold;
+        font-family: Avenir;
+        color: black;
+    }
+    #section-id-{{section.id}} p {
+        width: 800px;
+        margin: auto;
+        text-align: center;
+        font-size: 10pt;
+        font-weight: bold;
+        font-family: Helvetica;
+    }
+    @media (max-width: 900px) {
+        #section-id-{{section.id}} .content {
+            width: 100%;
+        }
+        #section-id-{{section.id}} p {
+            width: 100%;
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+    }
+    @media (max-width: 500px) {
+         #section-id-{{section.id}} .content {
+            flex-wrap: wrap;
+            justify-content: space-around;
+         }
+         #section-id-{{section.id}} .connect-item {
+            width: 100%;
+         }
+    }
+</style>
+<section id="section-id-{{section.id}}">
+    <div class="content">
+        {% for block in section.blocks%}
+            <div class="connect-item">
+                <a href="{{block.settings.item_url}}"><img src="{{block.settings.item_img | img_url:'132x118'}}"></a>
+                <h2>{{block.settings.item_header}}</h2>
+            </div>
+        {% endfor %}
+    </div>
+    <p>{{section.settings.description}}</p>
+</section>
+{% schema %} 
+  {
+    "name": "Connect Others",
+    "settings": [
+		{
+            "id":"description",
+            "type":"text",
+            "label":"Description"
+        }
+	],
+    "blocks": [
+        {
+            "type": "connect_item",
+            "name": "Connect Item",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "item_img",
+                    "label": "Item Image"
+                },
+                {
+                    "type": "text",
+                    "id": "item_header",
+                    "label": "Item Header"
+                },
+                {
+                    "type": "url",
+                    "id": "item_url",
+                    "label": "Item URL"
+                }
+            ]
+        }
+    ]
+  }
+{% endschema %}

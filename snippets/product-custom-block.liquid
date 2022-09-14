@@ -1,0 +1,90 @@
+{%- liquid
+  assign on_sale = false
+  if product.compare_at_price > product.price
+    assign on_sale = true
+  endif
+
+  assign product_url = product.url | within: collection
+
+  if animation_type == blank
+    assign animation_type = "cc-fade-in-up"
+  endif
+
+  assign primary_image = product.featured_media.preview_image
+  assign secondary_image = product.media[1].preview_image
+-%}
+<div class="col-md-6 bd-rt">
+  <div class="cat-pro-bd">
+    <ul class="prodt-cvr clearfix">
+      <a href="{{ product_url }}"> 
+        <li>{% render 'responsive-image',product:product, image: primary_image, aspect_ratio: primary_image.aspect_ratio %}  </li></a>
+
+
+      <li>
+        <div class="p-area">
+
+          <a href="{{ product_url }}"><h4 class="text-left bld">{{ product.title }}</h4></a>
+          <div class="clear"></div> 
+          <div class="prod-desc carousal show-read-more">{{product.description}}</div>
+
+          <div class="star-lft">
+            <div class="star-icon">
+              <style>
+                .cat-pro-bd a.text-m {
+                  width: 23.5px;
+                  height: unset;
+                  padding: unset;
+                  margin: unset;
+                  overflow: unset;
+                  clip: unset;
+                  border: unset;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: clip;
+                  background: white;
+                  word-spacing: 50px;
+                }
+              </style>                  
+              <div class="yotpo bottomLine"
+                   data-product-id="{{ product.id }}">
+              </div>
+            </div>
+            <div class="price-rt">
+              <b>
+                <!--               {% if product.price_varies %}{{ 'products.listing.from' | t }}{% endif %} -->
+                <span class="theme-money">{{ product.price | money | remove:" " }}</span>
+                {% if on_sale %}<span class="was-price theme-money">{{ product.compare_at_price | money | remove:" " }}</span>{% endif %}
+
+                {%- assign variant = product.variants | sort: 'price' | first -%}
+                {% render 'unit-price', variant: variant %}
+              </b>
+            </div>
+          </div>
+
+          <div class="clear"></div>
+          <div class="row">
+            <div class="col-xs-12 inr">
+              <form method="post" action="/cart/add">
+                <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+                {% if product.tags contains 'preorder' %}
+                <input type="submit" value="PREORDER" class="input-button"  data-skip-cart="false"/>
+                {% else %}
+                <input type="submit" value="ADD TO CART" class="input-button"  data-skip-cart="false"/>
+                {% endif %}
+                
+              </form> 
+              
+              
+            </div>
+            <!--<div class="col-xs-6 pl-2 inr">
+<a href="{{ product_url }}" data-id= "{{ product_id }}" class="learn-btn" tabindex="0">LEARN MORE</a>
+</div>-->
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+

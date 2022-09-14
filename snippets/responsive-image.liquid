@@ -1,0 +1,36 @@
+{%- if aspect_ratio -%}
+  {%- assign cover = true -%}
+{%- else -%}
+  {%- assign aspect_ratio = image.aspect_ratio -%}
+  {%- assign cover = false -%}
+{%- endif -%}
+<div class="rimage-outer-wrapper" style="max-width: {{ image.width }}px"
+  {% if animateZoom %}data-cc-animate="cc-zoom-out"{% endif %}
+>
+    {% if product.tags contains 'preorder' %}
+    <div class="badge-ribbon">
+      <span class="badge-ribbon-span" style="background-color: rgb(72 72 72); border-color: rgb(63 63 63); color: rgb(255, 255, 255); font-size: 10px;">Pre-order</span>
+    </div>
+    {% endif %}
+  <div class="rimage-wrapper lazyload--placeholder" style="padding-top:{{ 1 | divided_by: aspect_ratio | times: 100 }}%">
+    {% if initial %}
+      <img class="rimage__image lazyload fade-in {% if cover %}cover{% endif %}" data-src="{{ image | img_url: initial }}" alt="{{ image.alt | escape }}">
+      {% assign initial = false %}
+    {% endif %}
+    {% assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+    <img class="rimage__image lazyload{% if manual_image_load %}--manual{% endif %} fade-in {% if cover %}cover{% endif %}"
+      data-src="{{ img_url }}"
+      data-widths="[720, 900, 1080, 1296, 1512, 1728, 2048]"
+      data-aspectratio="{{ image.aspect_ratio }}"
+      data-sizes="auto"
+      alt="{{ image.alt | escape }}"
+      {% if cover %}data-parent-fit="cover"{% endif %}>
+
+    <noscript>
+      {% assign img_url = image | img_url: '1024x1024' %}
+      <img src="{{ img_url }}" alt="{{ image.alt | escape }}" class="rimage__image">
+    </noscript>
+  </div>
+</div>
+{% assign aspect_ratio = false %}
+

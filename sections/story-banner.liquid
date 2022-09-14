@@ -1,0 +1,22 @@
+<div class="banner">
+<img src="{{ section.settings.banner | img_url:'master' }}" class="w-100">
+</div>
+{% schema %}
+  {
+    "name": "Story Banner",
+    "settings": [
+      {
+	      "type": "image_picker",
+    	  "id": "banner",
+      	  "label": "Image"
+      }
+
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

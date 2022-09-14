@@ -1,0 +1,146 @@
+<div class="b-method">
+  <div class="container-fluid">
+    
+    {% if section.settings.main_heading != blank %}
+          <h2>{{ section.settings.main_heading }}</h2>
+    {%endif%}
+  <div class="row">
+    <div class="col-lg-5 col-md-7 col-xs-12">
+
+   <div id="myCarouselz" class="carousel slide" data-ride="carousel">
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <!-- for loop start -->
+    {% assign count = 0 %}
+    {% for block in section.blocks %}
+    
+    {% if count == 0 %} <div class="item active"> {%else%}<div class="item">{%endif%}
+        {% assign count = count | plus: 1 %}
+         <div class="review-box">
+           {% if block.settings.heading != blank %}
+              <h4>{{ block.settings.heading }}</h4>
+           {%endif%}
+           {% if block.settings.paragraph != blank %}
+           
+           <span>{{ block.settings.paragraph | Escape }}</span>          
+
+           {%endif%}
+
+      </div>
+    </div>
+    
+ 	{%endfor%}
+    
+    <div class="review-box outer clearfix">
+          {% if section.settings.btn_text != blank %}
+           <a href="{{ section.settings.link }}">{{ section.settings.btn_text }}</a>
+           {%endif%}
+          <div class="on-sec"> 
+           <ul class="star-list sz clearfix">
+              <li><i class="fa fa-star" aria-hidden="true"></i></li>
+              <li><i class="fa fa-star" aria-hidden="true"></i></li>
+              <li><i class="fa fa-star" aria-hidden="true"></i></li>
+              <li><i class="fa fa-star" aria-hidden="true"></i></li>
+              <li><i class="fa fa-star" aria-hidden="true"></i></li>
+            </ul>
+           <span class="crdt">Based on 35 reviews</span>
+      </div>
+      </div>
+    
+    <!-- for loop end-->
+  </div>
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarouselz" data-slide="prev">
+ <i class="fa fa-angle-left" aria-hidden="true"></i>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarouselz" data-slide="next">
+<i class="fa fa-angle-right" aria-hidden="true"></i>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+    </div>
+     <div class="col-lg-7 col-md-5 col-xs-4"></div>
+  </div>
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Barber Method Section",
+  "class": "barber",
+  "settings": [
+     	 {
+          "id": "main_heading",
+          "type": "text",
+          "label": "Main Heading",
+		  "default":"THE RICH BARBER METHOD"
+        },
+  		{
+          "id": "btn_text",
+          "type": "text",
+          "label": "Button text",
+		  "default":"DOWNLOAD FREE E-BOOK"
+        },
+		
+        {
+          "id": "link",
+          "type": "url",
+          "label": "E-book Button link"
+        }
+  
+  ],
+  "blocks": [
+    {
+      "type": "highlight",
+      "name": "Highlight",
+      "settings": [
+        
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Text"
+        },
+  		{
+          "id": "paragraph",
+          "type": "richtext",
+          "label": "Text"
+        },
+		{
+          "id": "btn_text",
+          "type": "text",
+          "label": "Button text",
+		  "default":"DOWNLOAD FREE E-BOOK"
+        },
+		
+        {
+          "id": "link",
+          "type": "url",
+          "label": "E-book Button link"
+        }
+		
+      ],
+      "limit": 6
+    }
+  ],
+  "presets": [
+    {
+      "name": "Barber Method Section",
+      "category": "HOME DYNAMIC SECTION",
+      "blocks": [
+        {
+          "type": "highlight",
+          "settings": {
+            
+          }
+        }
+        
+        
+        
+      ]
+    }
+  ]
+}
+
+{% endschema %}

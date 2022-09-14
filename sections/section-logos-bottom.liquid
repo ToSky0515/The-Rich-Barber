@@ -1,0 +1,70 @@
+<div class="logo-bg">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-3">
+        <div class="bd-bg">
+        {% if section.settings.heading != 'blank' %}
+        {{section.settings.heading}}
+        {%endif%}
+        </div>
+      </div>
+      <div class="col-xs-3 f-logo">
+     	{%- if section.settings.logo1 != blank -%}
+          {{section.settings.logo1 | img_url: '363x86', scale: 2 | img_tag: block.settings.image.alt }} 
+           {%- endif -%}
+      </div>
+      <div class="col-xs-3">
+      {%- if section.settings.logo2 != blank -%}
+          {{section.settings.logo2 | img_url: '363x86', scale: 2 | img_tag: block.settings.image.alt }} 
+           {%- endif -%}
+      </div>
+      <div class="col-xs-3">
+      {%- if section.settings.logo3 != blank -%}
+          {{section.settings.logo3 | img_url: '363x86', scale: 2 | img_tag: block.settings.image.alt }} 
+           {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %} 
+  {
+    "name": "Logos Section",
+    "settings": [
+		{
+        "id":"heading",
+        "type":"text",
+        "label":"Heading",
+		"default":"Available At"
+        },
+
+	   {
+        "type": "image_picker",
+        "id": "logo1",
+        "label": "Logo 1",
+        "info": "363 x 86px recommended"
+       },
+		{
+        "type": "image_picker",
+        "id": "logo2",
+        "label": "Logo 2",
+        "info": "363 x 86px recommended"
+       },
+		{
+        "type": "image_picker",
+        "id": "logo3",
+        "label": "Logo 3",
+        "info": "363 x 86px recommended"
+       }
+		
+		
+		
+	],
+    "presets": [
+        {
+          "category": "HOME DYNAMIC SECTION",
+          "name": "Bottom Logos Section",
+          "settings": {}
+        }
+      ]
+  }
+{% endschema %}

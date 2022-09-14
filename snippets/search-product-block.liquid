@@ -1,0 +1,29 @@
+<div class="col-md-4">
+    	<div class="search-bxz">
+	<div class="seller-img">
+		 <a href="{{ product.url | within: collection }}">
+          <img style="object-fit: contain;" src="{{ product.featured_image.src | img_url: "large" }}" alt="{{ product.featured_image.alt | escape }}"> 
+         </a>
+	</div>
+	<div class="p-area">
+		<a href="{{ product.url | within: collection }}">
+          <h4 class="text-left bld best-seller-prod">{{ product.title }}</h4>
+        </a>
+		
+		<div class="clear"></div>
+		<div class="search-desc">
+			{{ product.description }}
+		</div>
+      <div class="search-star"> <div class="yotpo bottomLine newp-line" data-product-id="{{ product.id }}"> </div></div>
+     
+      <div class="pr-dlr">{{product.price | money | remove:" "}}</div>
+      <div class="row">
+        <form method="post" action="{{routes.cart_add_url}}">
+          <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+          <div class="col-xs-12">
+            <input type="submit" value="{{ section.settings.btn-title }}" class="input-button" /></div>
+        </form>     
+     </div>
+	</div>
+	</div>
+ </div>

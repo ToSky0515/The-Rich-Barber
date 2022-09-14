@@ -1,0 +1,54 @@
+<div class="our-vl">
+  <div class="container-fluid">
+    <h2>{{ section.settings.title }}</h2>
+    <div class="row">
+     {% for block in section.blocks %}
+      <div class="col-xs-4">
+      	<img src="{{ block.settings.image | img_url:'master' }}">
+        <h3>{{ block.settings.title }}</h3>
+      </div>
+      {% endfor %}
+      
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Our Values",
+    "settings": [
+      {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+      }
+	],
+   "blocks": [
+	{
+      "type": "text",
+      "name": "Text",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+          },
+         {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+          }     
+
+
+        ]
+	  }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

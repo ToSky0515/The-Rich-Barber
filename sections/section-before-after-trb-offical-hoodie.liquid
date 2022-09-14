@@ -1,0 +1,48 @@
+{%if section.settings.image != blank %}
+<style>
+  .rich-diff{
+    background-image: url({{section.settings.image | img_url: 'original' }}) !important;
+  }
+</style>
+{%endif%}
+<div class="rich-diff">
+  <div class="container">
+  <h1>{{section.settings.main_heading}}</h1>
+    <h5 class="bef-h">{{section.settings.before}}</h5>
+    <h5 class="af-h">{{section.settings.after}}</h5>
+</div>
+  </div>
+{% schema %} 
+  {
+    "name": "section before after",
+    "settings": [
+        {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Background Image",
+        "info":"Recommended size 1824x722"
+        },
+		{
+        "id":"main_heading",
+        "type":"textarea",
+        "label":"Main heading",
+		"default":"THE RICH BARBER <sup>®</sup> <span>DIFFERENCE</span>"
+        },
+		
+	    {
+        "id":"before",
+        "type":"text",
+        "label":"Before Text",
+        "default":"Before"
+        },
+        {
+        "id":"after",
+        "type":"text",
+        "label":"After Text",
+        "default":"After"
+        }
+		
+		
+	]
+  }
+{% endschema %}

@@ -1,0 +1,87 @@
+
+<div class="b-news">
+  {% form 'customer', id: form_id %}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="symbol-icon">
+    <img src="https://cdn.shopify.com/s/files/1/0495/0661/files/symbol.png?v=1622717818">
+    </div>
+      
+      {% if form.posted_successfully? %}
+     
+      	 <div class="thankyou_msg_bottom">
+            <h2>{{ 'general.newsletter.success' | t }}</h2>
+         </div>
+      {% endif%}
+      {% if section.settings.heading != 'blank' %}  
+      <h2>{{section.settings.heading}}</h2>
+      {% endif%}
+      {% if section.settings.paragraph != 'blank' %}
+      <p>{{section.settings.paragraph}}</p>
+      {% endif%}
+      
+     
+       
+       <input type="hidden" name="newsletter" value="true"/>
+      <div class="newsletter-box btm">
+        <input type="email" placeholder="Enter your email" aria-label="{{ 'general.signup.email_label' | t | escape }}"
+                         placeholder="{{ 'general.signup.email_label' | t | escape }}" class="required" value="" id="mailinglist_email{{ section.id }}" name="contact[email]" >
+          <input type="submit" value="Sign Up">
+        </div>
+      	 {% if form.errors %}
+      <div class="signup-form__response">
+        {% for field in form.errors %}
+        <p class="error">{{ field | capitalize }} - {{ form.errors.messages[field] }}</p>
+        {% endfor %}
+      </div>
+     
+    {% endif %}
+      
+      {% if section.settings.bottom_text != 'blank' %}
+      <span>{{section.settings.bottom_text}}</span>
+      {% endif %}
+    </div>
+  </div>
+    {% endform %}
+</div> 
+
+{% schema %} 
+  {
+    "name": "Bottom Newsletter Section",
+    "settings": [
+		{
+        "id":"heading",
+        "type":"text",
+        "label":"Newsletter heading",
+		"default":"SIGN UP AND RECEIVE 10% OFF YOUR FIRST ORDER"
+        },
+
+	    {
+        "id":"paragraph",
+        "type":"richtext",
+        "label":"Newsletter message",
+"default":"<p>SUBSCRIBE TO OUR NEWSLETTER TO HEAR ABOUT THE LATEST NEWS, PROMOTIONS AND MORE.</p>"
+        },
+		{
+        "id":"bottom_text",
+        "type":"text",
+        "label":"Email text",
+        "default":"BY SIGNING UP TO OUR NEWSLETTER YOU ARE AGREEING TO OUR PRIVACY POLICY. PLEASE NOTE: ONLY NEW SUBSCRIBERS AND CUSTOMERS WILL RECEIVE AN EMAIL."
+        }
+		
+	],
+    "presets": [
+        {
+          "category": "HOME DYNAMIC SECTION",
+          "name": "Bottom Newsletter Section",
+          "settings": {}
+        }
+      ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
